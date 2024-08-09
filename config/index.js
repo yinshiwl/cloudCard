@@ -6,7 +6,7 @@ import prodConfig from './prod'
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig = {
-    projectName: 'cloudCard',
+    projectName: '云联名片',
     date: '2024-8-9',
     designWidth: 375,
     deviceRatio: {
