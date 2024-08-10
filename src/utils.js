@@ -1,7 +1,7 @@
 import Taro from "@tarojs/taro"
 
 class Utils {
-    getNavBarHeight() {
+    getNavBarData() {
         const systemInfo = Taro.getSystemInfoSync()
         const menuButtonInfo = Taro.getMenuButtonBoundingClientRect()
         const statusBarHeight = systemInfo.statusBarHeight ?? 44
@@ -9,7 +9,8 @@ class Utils {
         const menuButtonStatusBarGap = menuButtonInfo.top - statusBarHeight
 
         const navBarHeight = menuButtonStatusBarGap * 2 + menuButtonInfo.height + statusBarHeight
-        return navBarHeight;
+        const paddingX = systemInfo.screenWidth - menuButtonInfo.right
+        return { navBarHeight, paddingX, statusBarHeight }
     }
 }
 const utils = new Utils();
