@@ -1,0 +1,16 @@
+.userInfo {
+    width: 100%;
+    padding: 40rpx;
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+
+    .name {
+        color: #fff;
+        font-size: var(--nutui-font-text);
+        font-weight: bolder;
+        display: flex;
+        align-items: center;
+        gap: 10rpx;
+    }
+}
