@@ -20,7 +20,7 @@ export default ({ value }) => {
     }, [])
     if (value === undefined || value === null) return null;
     return (
-        <Tabbar fixed value={value} style={{ zIndex: 100 }} onSwitch={(v) => {
+        <Tabbar fixed value={value} style={{ zIndex: 100, background: 'var(--app-card-background)' }} onSwitch={(v) => {
             const url = getUrl(v)
             Taro.switchTab({
                 url: url

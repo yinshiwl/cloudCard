@@ -6,11 +6,50 @@
     gap: 20rpx;
 
     .name {
-        color: #fff;
+        color: var(--app-text-color-primary);
         font-size: var(--nutui-font-text);
         font-weight: bolder;
         display: flex;
         align-items: center;
         gap: 10rpx;
+    }
+}
+
+.userData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40rpx;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5rpx;
+        font-size: var(--nutui-font-text-small);
+        color: var(--app-text-color-primary);
+        font-weight: bolder;
+    }
+}
+
+.more {
+    background: var(--app-card-background);
+    margin: 20rpx;
+    padding: 20rpx;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30rpx;
+    border-radius: var(--app-radius);
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5rpx;
+        font-size: var(--nutui-font-text-small);
+        color: var(--app-text-color);
+        font-weight: bolder;
     }
 }
