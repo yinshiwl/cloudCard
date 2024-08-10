@@ -1,7 +1,8 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
-    'pages/user/index'
+    'pages/collect/index',
+    'pages/user/index',
   ],
   window: {
     backgroundTextStyle: 'light',
@@ -11,11 +12,17 @@ export default defineAppConfig({
   },
   tabBar: {
     custom: true,
-    list: [{
-      pagePath: 'pages/index/index'
-    }, {
-      pagePath: 'pages/user/index'
-    }]
+    list: [
+      {
+        pagePath: 'pages/index/index'
+      },
+      {
+        pagePath: 'pages/collect/index'
+      },
+      {
+        pagePath: 'pages/user/index'
+      }
+    ]
   },
   usingComponents: {}
 })

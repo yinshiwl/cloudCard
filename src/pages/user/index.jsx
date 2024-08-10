@@ -80,7 +80,7 @@ export default () => {
                     </View>
                 </View>
             </Body>
-            <Tabbar value={4} />
+            <Tabbar value={2} />
         </View>
     );
 }

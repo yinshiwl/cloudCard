@@ -1,20 +1,19 @@
 import { Tabbar } from '@nutui/nutui-react-taro'
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro'
+import { Star, Home, User } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export default ({ value }) => {
+    const iconSize = useMemo(() => {
+        return 20;
+    }, [])
     const getUrl = useCallback((v) => {
         switch (v) {
             case 0:
                 return '/pages/index/index'
             case 1:
-                return '/pages/category/index'
+                return '/pages/collect/index'
             case 2:
-                return '/pages/find/index'
-            case 3:
-                return '/pages/cart/index'
-            case 4:
                 return '/pages/user/index'
         }
     }, [])
@@ -26,11 +25,9 @@ export default ({ value }) => {
                 url: url
             })
         }}>
-            <Tabbar.Item title="首页" icon={<Home size={18} />} />
-            <Tabbar.Item title="分类" icon={<Category size={18} />} />
-            <Tabbar.Item title="发现" icon={<Find size={18} />} />
-            <Tabbar.Item title="购物车" icon={<Cart size={18} />} />
-            <Tabbar.Item title="我的" icon={<User size={18} />} />
+            <Tabbar.Item title="首页" icon={<Home size={iconSize} />} />
+            <Tabbar.Item title="收藏" icon={<Star size={iconSize} />} />
+            <Tabbar.Item title="我的" icon={<User size={iconSize} />} />
         </Tabbar>
     );
 }
