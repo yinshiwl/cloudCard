@@ -6,6 +6,7 @@ import utils from '../../utils'
 import Navbar from '../../components/Navbar'
 import Body from '../../components/Body'
 import { Button, Empty } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 
 function Index() {
 
@@ -20,7 +21,14 @@ function Index() {
           <Text>
             赶快来创建一张名片吧
           </Text>
-          <Button type="primary" className={styles.button} >
+          <Button shape="square" size="large" type="primary" className={styles.button} onClick={() => {
+            Taro.navigateTo({
+              url: '/pages/editCard/index',
+              success: function (res) {
+                res.eventChannel.emit('editCardPage', { data: { type: 'CREATE' } })
+              }
+            })
+          }}>
             创建名片
           </Button>
         </View>

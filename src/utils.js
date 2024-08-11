@@ -12,6 +12,9 @@ class Utils {
         const paddingX = systemInfo.screenWidth - menuButtonInfo.right
         return { navBarHeight, paddingX, statusBarHeight }
     }
+    getOpenerEventChannel() {
+        return Taro.getCurrentInstance().page.getOpenerEventChannel();
+    }
 }
 const utils = new Utils();
 export default utils;
