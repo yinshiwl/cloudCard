@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbar'
 import Body from '../../components/Body'
 import { Button, Empty } from '@nutui/nutui-react-taro'
 import Taro from '@tarojs/taro'
+import GbButton from '../../components/GbButton'
 
 function Index() {
 
@@ -21,7 +22,7 @@ function Index() {
           <Text>
             赶快来创建一张名片吧
           </Text>
-          <Button shape="square" size="large" type="primary" className={styles.button} onClick={() => {
+          <GbButton style={{ marginTop: '20rpx', width: '70%' }} onClick={() => {
             Taro.navigateTo({
               url: '/pages/editCard/index',
               success: function (res) {
@@ -30,7 +31,7 @@ function Index() {
             })
           }}>
             创建名片
-          </Button>
+          </GbButton>
         </View>
       </Body>
       <Tabbar value={0} />
