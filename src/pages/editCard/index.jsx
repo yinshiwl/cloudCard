@@ -64,6 +64,13 @@ export default () => {
                         }
                     >
                         <Form.Item
+                            label="头像/LOGO"
+                            name="avatar"
+                            rules={[{ required: true, message: '请上传个人头像或企业LOGO' }]}
+                        >
+                            <Uploader />
+                        </Form.Item>
+                        <Form.Item
                             label="姓名"
                             name="username"
                             rules={[{ required: true, message: '请输入姓名' }]}
