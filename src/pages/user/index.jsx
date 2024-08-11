@@ -9,8 +9,8 @@ import { ArrowSize6, Headphones } from '@nutui/icons-react-taro'
 export default () => {
     return (
         <View>
-            <Navbar title="用户中心" ></Navbar>
-            <Body>
+            <Navbar title="用户中心" color="#fff" ></Navbar>
+            <Body hasTabbar>
                 <View className={styles.userInfo}>
                     <Avatar size="large" />
                     <View className={styles.name}>登录/注册<ArrowSize6 width="var(--nutui-font-text)" /></View>

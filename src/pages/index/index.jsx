@@ -13,8 +13,8 @@ function Index() {
 
   return (
     <View>
-      <Navbar title="云联名片" />
-      <Body>
+      <Navbar title="云联名片" color="#fff" />
+      <Body hasTabbar>
         <View className={styles.empty}>
           <Text>
             您还没有名片噢

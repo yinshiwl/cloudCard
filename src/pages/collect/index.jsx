@@ -7,8 +7,8 @@ import styles from "./index.module.scss"
 export default () => {
     return (
         <View className={styles.root}>
-            <Navbar title="我的收藏" ></Navbar>
-            <Body>
+            <Navbar title="我的收藏" color="#fff" ></Navbar>
+            <Body hasTabbar>
                 test
             </Body>
             <Tabbar value={1} />

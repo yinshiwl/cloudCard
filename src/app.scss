@@ -1,5 +1,17 @@
 :root,
 page {
+    --nutui-form-item-error-line-color: var(--nutui-color-danger);
+    --nutui-form-item-required-color: var(--nutui-color-danger);
+    --nutui-form-item-error-message-color: var(--nutui-color-danger);
+    --nutui-cell-title-color: var(--nutui-color-title);
+    --nutui-input-color: var(--nutui-color-title);
+    --nutui-form-item-label-font-size: var(--nutui-font-size-5);
+    --nutui-form-item-body-font-size: var(--nutui-font-size-5);
+    --nutui-form-item-tip-font-size: var(--nutui-font-size-4);
+    --nutui-input-font-size: var(--nutui-font-size-5);
+    --nutui-textarea-font: var(--nutui-font-size-5);
+    --nutui-textarea-text-color: var(--nutui-color-title);
+
     background: var(--nutui-gray-2);
     --app-primary-color: var(--nutui-color-primary);
     --app-background: var(--nutui-gray-2);
