@@ -41,7 +41,7 @@ export default () => {
     }
     return (
         <View>
-            <Navbar title={title} back background="var(--app-primary-color)" color="#fff" ></Navbar>
+            <Navbar title={title} back background="var(--app-primary-color)" color="#fff" titleCenter ></Navbar>
             <Body>
                 <View className={styles.form}>
                     <Form

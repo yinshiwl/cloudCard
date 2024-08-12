@@ -24,8 +24,17 @@
     }
 
     .body {
+        width: 100%;
         z-index: 100;
         display: flex;
         align-items: center;
+        position: relative;
+
+        .back {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
