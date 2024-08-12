@@ -13,7 +13,7 @@ export default ({ title, background, back, color, titleCenter }) => {
             background: background ?? 'unset',
         }}>
             {!background && <View className={styles.topBg}><View className={styles.bg}></View></View>}
-            <View className={styles.body} style={{ color: color ?? 'unset', justifyContent: titleCenter ? 'center' : 'unset', margin: `0 ${paddingX}px` }}>
+            <View className={styles.body} style={{ color: color ?? "var(--app-text-color-primary)", justifyContent: titleCenter ? 'center' : 'unset', margin: `0 ${paddingX}px` }}>
                 {back && <ArrowLeft className={styles.back} onClick={() => Taro.navigateBack()} />}
                 {title}
             </View>

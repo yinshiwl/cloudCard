@@ -12,7 +12,7 @@ export default () => {
   const [emptyCard, setEmptyCard] = useState(false);
   return (
     <View>
-      <Navbar title="云联名片" color="#fff" />
+      <Navbar title="云联名片" />
       <Body hasTabbar>
         {emptyCard ? <Empty /> : <CardList />}
       </Body>

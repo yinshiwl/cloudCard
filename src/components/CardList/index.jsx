@@ -6,12 +6,7 @@ import GbButton from "../GbButton";
 export default ({ type = 'SELF' }) => {
     return (
         <View className={styles.root}>
-            <View className={styles.cardItem}>
-                <Text>名片</Text>
-            </View>
-            <View className={styles.cardItem}>
-                <Text>名片</Text>
-            </View>
+            <CardItem />
             {type === 'SELF' && <GbButton onClick={() => {
                 Taro.navigateTo({
                     url: '/pages/editCard/index',
@@ -22,6 +17,25 @@ export default ({ type = 'SELF' }) => {
             }}>
                 添加名片
             </GbButton>}
+        </View>
+    );
+}
+
+function CardItem() {
+    return (
+        <View className={styles.cardItem}>
+            <Text>名片</Text>
+            <View className={styles.operate}>
+                <View className={styles.operateItem}>
+                    <Text>编辑</Text>
+                </View>
+                <View className={styles.operateItem}>
+                    <Text>编辑</Text>
+                </View>
+                <View className={styles.operateItem}>
+                    <Text>编辑</Text>
+                </View>
+            </View>
         </View>
     );
 }

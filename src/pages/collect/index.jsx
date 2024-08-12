@@ -8,7 +8,7 @@ import CardList from "../../components/CardList";
 export default () => {
     return (
         <View className={styles.root}>
-            <Navbar title="我的收藏" color="#fff" ></Navbar>
+            <Navbar title="我的收藏" ></Navbar>
             <Body hasTabbar>
                 <CardList type="COLLECT" />
             </Body>
