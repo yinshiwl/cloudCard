@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar'
 import Body from '../../components/Body'
 import Taro from '@tarojs/taro'
 import GbButton from '../../components/GbButton'
+import CardList from '../../components/CardList'
 
 export default () => {
   const [emptyCard, setEmptyCard] = useState(false);
@@ -38,29 +39,6 @@ function Empty() {
         })
       }}>
         创建名片
-      </GbButton>
-    </View>
-  );
-}
-
-function CardList() {
-  return (
-    <View className={styles.cardList}>
-      <View className={styles.cardItem}>
-        <Text>个人名片</Text>
-      </View>
-      <View className={styles.cardItem}>
-        <Text>个人名片</Text>
-      </View>
-      <GbButton onClick={() => {
-        Taro.navigateTo({
-          url: '/pages/editCard/index',
-          success: function (res) {
-            res.eventChannel.emit('editCardPage', { data: { type: 'CREATE' } })
-          }
-        })
-      }}>
-        添加名片
       </GbButton>
     </View>
   );
