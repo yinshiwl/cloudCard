@@ -12,7 +12,7 @@ export default () => {
     const [title, setTitle] = useState('')
     useEffect(() => {
         const eventChannel = utils.getOpenerEventChannel();
-        eventChannel.on('editCardPage', (data) => {
+        eventChannel.on('editCardInfoPage', (data) => {
             setTitle(data.data.type === 'CREATE' ? '创建名片' : '编辑名片')
         })
     }, [])

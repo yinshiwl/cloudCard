@@ -32,9 +32,9 @@ function Empty() {
       </Text>
       <GbButton style={{ marginTop: '20rpx', width: '70%' }} onClick={() => {
         Taro.navigateTo({
-          url: '/pages/editCard/index',
+          url: '/pages/editCardInfo/index',
           success: function (res) {
-            res.eventChannel.emit('editCardPage', { data: { type: 'CREATE' } })
+            res.eventChannel.emit('editCardInfoPage', { data: { type: 'CREATE' } })
           }
         })
       }}>
