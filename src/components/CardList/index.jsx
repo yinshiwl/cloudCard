@@ -4,6 +4,7 @@ import Taro from "@tarojs/taro";
 import GbButton from "../GbButton";
 import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
+import { Avatar } from "@nutui/nutui-react-taro";
 
 export default ({ type = 'SELF' }) => {
     return (
@@ -26,7 +27,20 @@ export default ({ type = 'SELF' }) => {
 function CardItem() {
     return (
         <View className={styles.cardItem}>
-            <Text>名片</Text>
+            <View className={styles.content}>
+                <View className={styles.left}>
+                    <View className={styles.top}>
+                        <Text className={styles.name}>姓名</Text>
+                        <Text className={styles.position}>职位</Text>
+                    </View>
+                    <View className={styles.bottom}>
+                        <Text className={styles.company}>公司</Text>
+                    </View>
+                </View>
+                <View className={styles.right}>
+                    <Avatar size="large" />
+                </View>
+            </View>
             <View className={styles.operate}>
                 <View className={styles.operateItem}>
                     <Edit className={styles.icon} />
