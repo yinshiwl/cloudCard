@@ -42,7 +42,9 @@ function CardItem() {
                 </View>
             </View>
             <View className={styles.operate}>
-                <View className={styles.operateItem}>
+                <View className={styles.operateItem} onClick={() => {
+                    Taro.navigateTo({ url: '/pages/editCard/index' })
+                }}>
                     <Edit className={styles.icon} />
                     <Text>编辑</Text>
                 </View>

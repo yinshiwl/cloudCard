@@ -4,6 +4,7 @@ export default defineAppConfig({
     'pages/collect/index',
     'pages/user/index',
     'pages/editCardInfo/index',
+    'pages/editCard/index',
   ],
   window: {
     backgroundTextStyle: 'light',
