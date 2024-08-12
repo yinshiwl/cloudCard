@@ -2,6 +2,7 @@ import { Text, View } from "@tarojs/components";
 import styles from "./index.module.scss"
 import Taro from "@tarojs/taro";
 import GbButton from "../GbButton";
+import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 
 export default ({ type = 'SELF' }) => {
     return (
@@ -27,13 +28,16 @@ function CardItem() {
             <Text>名片</Text>
             <View className={styles.operate}>
                 <View className={styles.operateItem}>
+                    <Edit className={styles.icon} />
                     <Text>编辑</Text>
                 </View>
                 <View className={styles.operateItem}>
-                    <Text>编辑</Text>
+                    <Eye className={styles.icon} />
+                    <Text>查看</Text>
                 </View>
                 <View className={styles.operateItem}>
-                    <Text>编辑</Text>
+                    <Del className={styles.icon} />
+                    <Text>删除</Text>
                 </View>
             </View>
         </View>
