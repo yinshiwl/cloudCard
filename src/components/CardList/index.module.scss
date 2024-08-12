@@ -31,8 +31,12 @@
                 font-size: 28rpx;
                 border-right: 1px solid var(--nutui-color-border);
 
-                .icon{
+                .icon {
                     width: 28rpx;
+                }
+
+                &.delete {
+                    color: var(--app-danger-color);
                 }
             }
 

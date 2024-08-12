@@ -3,6 +3,7 @@ import styles from "./index.module.scss"
 import Taro from "@tarojs/taro";
 import GbButton from "../GbButton";
 import { Edit, Eye, Del } from '@nutui/icons-react-taro'
+import classNames from "classnames";
 
 export default ({ type = 'SELF' }) => {
     return (
@@ -35,7 +36,7 @@ function CardItem() {
                     <Eye className={styles.icon} />
                     <Text>查看</Text>
                 </View>
-                <View className={styles.operateItem}>
+                <View className={classNames(styles.operateItem, styles.delete)}>
                     <Del className={styles.icon} />
                     <Text>删除</Text>
                 </View>
