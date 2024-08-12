@@ -35,13 +35,17 @@
                     width: 28rpx;
                 }
 
+                &:last-child {
+                    border-right: none;
+                }
+
                 &.delete {
                     color: var(--app-danger-color);
                 }
-            }
 
-            .operateItem:last-child {
-                border-right: none;
+                &:active {
+                    opacity: 0.5;
+                }
             }
         }
     }
