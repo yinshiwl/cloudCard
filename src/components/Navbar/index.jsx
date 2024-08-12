@@ -11,7 +11,6 @@ export default ({ title, background, back, color, titleCenter }) => {
             height: `${navBarHeight - statusBarHeight}px`,
             paddingTop: `${statusBarHeight}px`,
             background: background ?? 'unset',
-            boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)"
         }}>
             {!background && <View className={styles.topBg}><View className={styles.bg}></View></View>}
             <View className={styles.body} style={{ color: color ?? 'unset', justifyContent: titleCenter ? 'center' : 'unset', margin: `0 ${paddingX}px` }}>
