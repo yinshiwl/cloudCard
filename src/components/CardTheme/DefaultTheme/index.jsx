@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { Avatar, FixedNav } from "@nutui/nutui-react-taro";
 import GbIcons from "../../GbIcons";
 import { useState } from "react";
+import classNames from "classnames";
 
 export default () => {
     return (
@@ -35,29 +36,7 @@ export default () => {
                     </Text>
                 </View>
             </View>
-            <View className={styles.operate}>
-                <View className={styles.operateItem}>
-                    <View className={styles.value}>
-                        <GbIcons name="eye" />
-                        <Text>2k</Text>
-                    </View>
-                    <Text>浏览</Text>
-                </View>
-                <View className={styles.operateItem}>
-                    <View className={styles.value}>
-                        <GbIcons name="star" />
-                        <Text>2k</Text>
-                    </View>
-                    <Text>收藏</Text>
-                </View>
-                <View className={styles.operateItem}>
-                    <View className={styles.value}>
-                        <GbIcons name="love" />
-                        <Text>2k</Text>
-                    </View>
-                    <Text>点赞</Text>
-                </View>
-            </View>
+            <Operate />
             <BbFixedNav />
         </View>
     );
@@ -119,5 +98,35 @@ function BbFixedNav() {
             onSelect={onSelect}
             position={{ bottom: '52px' }}
         />
+    );
+}
+
+function Operate() {
+    const [collect, setCollect] = useState(false)
+    const [like, setLike] = useState(false)
+    return (
+        <View className={styles.operate}>
+            <View className={classNames(styles.operateItem, styles.disableClick)}>
+                <View className={styles.value}>
+                    <GbIcons name="eye" />
+                    <Text>2k</Text>
+                </View>
+                <Text>浏览</Text>
+            </View>
+            <View className={classNames(styles.operateItem, { [styles.collect]: collect })} onClick={() => setCollect(!collect)}>
+                <View className={styles.value}>
+                    <GbIcons name={collect ? "star-fill" : "star"} color={collect ? "var(--nutui-orange-6)" : null} />
+                    <Text>2k</Text>
+                </View>
+                <Text>收藏</Text>
+            </View>
+            <View className={classNames(styles.operateItem, { [styles.like]: like })} onClick={() => setLike(!like)}>
+                <View className={styles.value}>
+                    <GbIcons name={like ? "love-fill" : "love"} color={like ? "var(--nutui-red-8)" : null} />
+                    <Text>2k</Text>
+                </View>
+                <Text>点赞</Text>
+            </View>
+        </View>
     );
 }
