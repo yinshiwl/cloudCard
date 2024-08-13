@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "iconfont";
+  /* Project id 4652191 */
+  src: url('../font/iconfont.ttf?t=1723533221850') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-phone:before {
+  content: "\e65c";
+}
+
+.icon-arrow:before {
+  content: "\e63c";
+}
