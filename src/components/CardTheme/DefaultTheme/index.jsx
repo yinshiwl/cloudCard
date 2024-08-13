@@ -28,7 +28,10 @@ export default () => {
                 </View>
             </View>
             <View className={styles.otherInfo}>
-                test222
+                <GbIcons name="describe" />
+                <Text className={styles.describe}>
+                    描述
+                </Text>
             </View>
             <BbFixedNav />
         </View>
