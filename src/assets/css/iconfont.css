@@ -1,7 +1,7 @@
 @font-face {
   font-family: "iconfont";
   /* Project id 4652191 */
-  src: url('//at.alicdn.com/t/c/font_4652191_1erphwb8nls.ttf?t=1723536569982') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4652191_x08442edub.ttf?t=1723543557237') format('truetype');
 }
 
 .iconfont {
@@ -10,6 +10,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eye:before {
+  content: "\e640";
 }
 
 .icon-love-fill:before {

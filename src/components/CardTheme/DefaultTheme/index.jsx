@@ -7,31 +7,56 @@ import { useState } from "react";
 export default () => {
     return (
         <View className={styles.root}>
-            <View className={styles.cardInfo}>
-                <View className={styles.avatar_name}>
-                    <View className={styles.avatar}>
-                        <Avatar size="large" />
+            <View className={styles.card}>
+                <View className={styles.cardInfo}>
+                    <View className={styles.avatar_name}>
+                        <View className={styles.avatar}>
+                            <Avatar size="large" />
+                        </View>
+                        <View className={styles.name}>
+                            <Text className={styles.nameText}>姓名</Text>
+                            <Text className={styles.position}>职位</Text>
+                        </View>
                     </View>
-                    <View className={styles.name}>
-                        <Text className={styles.nameText}>姓名</Text>
-                        <Text className={styles.position}>职位</Text>
+                    <View className={styles.company}>
+                        公司
+                    </View>
+                    <View className={styles.moreInfo}>
+                        <Row icon="phone-fill" title="手机号" extra="打电话" />
+                        <Row icon="weixin" title="微信号" extra="加微信" />
+                        <Row icon="email-fill" title="邮箱" extra="复制" />
+                        <Row icon="location-fill" title="地址" extra="地图" />
                     </View>
                 </View>
-                <View className={styles.company}>
-                    公司
-                </View>
-                <View className={styles.moreInfo}>
-                    <Row icon="phone-fill" title="手机号" extra="打电话" />
-                    <Row icon="weixin" title="微信号" extra="加微信" />
-                    <Row icon="email-fill" title="邮箱" extra="复制" />
-                    <Row icon="location-fill" title="地址" extra="地图" />
+                <View className={styles.otherInfo}>
+                    <GbIcons name="describe" />
+                    <Text className={styles.describe}>
+                        描述
+                    </Text>
                 </View>
             </View>
-            <View className={styles.otherInfo}>
-                <GbIcons name="describe" />
-                <Text className={styles.describe}>
-                    描述
-                </Text>
+            <View className={styles.operate}>
+                <View className={styles.operateItem}>
+                    <View className={styles.value}>
+                        <GbIcons name="eye" />
+                        <Text>2k</Text>
+                    </View>
+                    <Text>浏览</Text>
+                </View>
+                <View className={styles.operateItem}>
+                    <View className={styles.value}>
+                        <GbIcons name="star" />
+                        <Text>2k</Text>
+                    </View>
+                    <Text>收藏</Text>
+                </View>
+                <View className={styles.operateItem}>
+                    <View className={styles.value}>
+                        <GbIcons name="love" />
+                        <Text>2k</Text>
+                    </View>
+                    <Text>点赞</Text>
+                </View>
             </View>
             <BbFixedNav />
         </View>

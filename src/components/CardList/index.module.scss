@@ -75,11 +75,12 @@
                 align-items: center;
                 justify-content: center;
                 gap: 10rpx;
-                font-size: 28rpx;
+                font-size: var(--nutui-font-text-small);
                 border-right: 1px solid var(--nutui-color-border);
 
                 .icon {
-                    width: 28rpx;
+                    width: var(--nutui-font-text-small);
+                    height: var(--nutui-font-text-small);
                 }
 
                 &:last-child {
