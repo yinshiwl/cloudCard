@@ -1,7 +1,7 @@
 @font-face {
   font-family: "iconfont";
   /* Project id 4652191 */
-  src: url('../font/iconfont.ttf?t=1723533221850') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4652191_1erphwb8nls.ttf?t=1723536569982') format('truetype');
 }
 
 .iconfont {
@@ -12,10 +12,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-phone:before {
-  content: "\e65c";
+.icon-love-fill:before {
+  content: "\e663";
 }
 
-.icon-arrow:before {
+.icon-love:before {
+  content: "\e61a";
+}
+
+.icon-star:before {
+  content: "\e8b9";
+}
+
+.icon-star-fill:before {
+  content: "\e8c6";
+}
+
+.icon-describe:before {
+  content: "\ea84";
+}
+
+.icon-weixin:before {
+  content: "\e600";
+}
+
+.icon-location-fill:before {
+  content: "\e83d";
+}
+
+.icon-email-fill:before {
+  content: "\e856";
+}
+
+.icon-phone-fill:before {
+  content: "\e85f";
+}
+
+.icon-arrow-right:before {
   content: "\e63c";
 }
