@@ -5,8 +5,9 @@ import Body from "../../components/Body";
 import { useEffect, useState } from "react";
 import Taro from "@tarojs/taro";
 import utils from "../../utils";
-import { Button, Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
+import { Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
 import GbButton from "../../components/GbButton";
+import GbIcons from "../../components/GbIcons";
 
 export default () => {
     const [title, setTitle] = useState('')
@@ -68,7 +69,9 @@ export default () => {
                             name="avatar"
                             rules={[{ required: true, message: '请上传个人头像或企业LOGO' }]}
                         >
-                            <Uploader />
+                            <View>
+                                <Uploader uploadIcon={<GbIcons name="image" size="large" />} />
+                            </View>
                         </Form.Item>
                         <Form.Item
                             label="姓名"
@@ -80,30 +83,8 @@ export default () => {
                         <Form.Item
                             label="职位"
                             name="position"
-                            rules={[
-                                { required: true, message: '请输入在公司中的职位' },
-                            ]}
                         >
-                            <Input placeholder="在公司中的职位" clearable type="text" />
-                        </Form.Item>
-                        <Form.Item
-                            label="手机号"
-                            name="phone"
-                            rules={[{ required: true, message: '请输入手机号' }]}
-                        >
-                            <Input placeholder="请输入手机号" clearable type="tel" />
-                        </Form.Item>
-                        <Form.Item
-                            label="邮箱"
-                            name="email"
-                        >
-                            <Input placeholder="请输入邮箱" clearable type="email" />
-                        </Form.Item>
-                        <Form.Item
-                            label="微信号"
-                            name="wechat"
-                        >
-                            <Input placeholder="请输入微信号" clearable type="text" />
+                            <Input placeholder="请输入在公司中的职位" clearable type="text" />
                         </Form.Item>
                         <Form.Item
                             label="公司"
@@ -118,6 +99,27 @@ export default () => {
                             <Input placeholder="请输入公司详细地址" clearable type="text" />
                         </Form.Item>
                         <Form.Item
+                            label="手机"
+                            name="phone"
+                        >
+                            <Input placeholder="请输入手机号" clearable type="tel" />
+                        </Form.Item>
+                        <Form.Item
+                            label="微信"
+                            name="wechat"
+                        >
+                            <View>
+                                <Input placeholder="请输入微信号" clearable type="text" />
+                                <Uploader style={{ marginTop: '30rpx' }} uploadLabel="上传二维码" uploadIcon={<GbIcons name="qrcode" size="large" />} />
+                            </View>
+                        </Form.Item>
+                        <Form.Item
+                            label="邮箱"
+                            name="email"
+                        >
+                            <Input placeholder="请输入邮箱" clearable type="email" />
+                        </Form.Item>
+                        <Form.Item
                             label="描述"
                             name="description"
                         >
@@ -127,7 +129,7 @@ export default () => {
                             label="相册"
                             name="album"
                         >
-                            <Uploader multiple maxCount="5" />
+                            <Uploader multiple maxCount="5" uploadIcon={<GbIcons name="images" size="large" />} />
                         </Form.Item>
                     </Form>
                 </View>

@@ -20,4 +20,9 @@ page {
     --app-text-color: var(--nutui-color-text);
     --app-text-color-primary: var(--nutui-color-primary-text);
     --app-danger-color: var(--nutui-color-danger);
+    --nutui-uploader-image-width: 160rpx;
+    --nutui-uploader-image-height: 160rpx;
+    --nutui-uploader-image-border-radius: 16rpx;
+    --nutui-uploader-image-icon-tip-font-size: 24rpx;
+    --nutui-uploader-image-color: var(--app-text-color);
 }
