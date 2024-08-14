@@ -30,6 +30,6 @@ export default ({ name, size = 'default', color = 'default' }) => {
         }
     }, [color])
     return (
-        <IconFont fontClassName="iconfont" classPrefix="icon" name={name} size={sizeA} color={colorA} />
+        <IconFont fontClassName="iconfont" classPrefix="icon" name={name} size={sizeA} color={colorA} style={{ lineHeight: sizeA }} />
     );
 }

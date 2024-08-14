@@ -55,10 +55,10 @@ function Row({ icon, title, extra }) {
         <View className={styles.row}>
             <View className={styles.left}>
                 <GbIcons name={icon} size="small" color="primary" />
-                <Text>{title}</Text>
+                <Text className={styles.title}>{title}</Text>
             </View>
             <View className={styles.right}>
-                <Text>{extra}</Text>
+                <Text className={styles.extra}>{extra}</Text>
                 <GbIcons name="arrow-right" size="small" color="primary" />
             </View>
         </View>
@@ -117,21 +117,21 @@ function Operate() {
             <View className={classNames(styles.operateItem, styles.disableClick)}>
                 <View className={styles.value}>
                     <GbIcons name="eye" />
-                    <Text>2k</Text>
+                    <Text className={styles.valueText}>2k</Text>
                 </View>
                 <Text>浏览</Text>
             </View>
             <View className={classNames(styles.operateItem, { [styles.collect]: collect })} onClick={() => setCollect(!collect)}>
                 <View className={styles.value}>
                     <GbIcons name={collect ? "star-fill" : "star"} color={collect ? "var(--nutui-orange-6)" : null} />
-                    <Text>2k</Text>
+                    <Text className={styles.valueText}>2k</Text>
                 </View>
                 <Text>收藏</Text>
             </View>
             <View className={classNames(styles.operateItem, { [styles.like]: like })} onClick={() => setLike(!like)}>
                 <View className={styles.value}>
                     <GbIcons name={like ? "love-fill" : "love"} color={like ? "var(--nutui-red-8)" : null} />
-                    <Text>2k</Text>
+                    <Text className={styles.valueText}>2k</Text>
                 </View>
                 <Text>点赞</Text>
             </View>
