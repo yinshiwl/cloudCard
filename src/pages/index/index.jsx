@@ -7,9 +7,10 @@ import Body from '../../components/Body'
 import Taro from '@tarojs/taro'
 import GbButton from '../../components/GbButton'
 import CardList from '../../components/CardList'
+import GbIcons from '../../components/GbIcons'
 
 export default () => {
-  const [emptyCard, setEmptyCard] = useState(false);
+  const [emptyCard, setEmptyCard] = useState(true);
   return (
     <View>
       <Navbar title="云联名片" />
@@ -24,6 +25,7 @@ export default () => {
 function Empty() {
   return (
     <View className={styles.empty}>
+      <GbIcons name="empty" size="100rpx" color="var(--app-primary-color)" />
       <Text>
         您还没有名片噢
       </Text>
