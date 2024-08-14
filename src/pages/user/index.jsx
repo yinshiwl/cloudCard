@@ -3,8 +3,8 @@ import styles from "./index.module.scss"
 import Tabbar from '../../components/Tabbar';
 import Navbar from '../../components/Navbar';
 import Body from '../../components/Body';
-import { Avatar } from '@nutui/nutui-react-taro';
 import { ArrowSize6, Headphones } from '@nutui/icons-react-taro'
+import GbAvatar from '../../components/GbAvatar';
 
 export default () => {
     return (
@@ -12,7 +12,7 @@ export default () => {
             <Navbar title="用户中心" ></Navbar>
             <Body hasTabbar>
                 <View className={styles.userInfo}>
-                    <Avatar size="large" />
+                    <GbAvatar />
                     <View className={styles.name}>登录/注册<ArrowSize6 width="var(--nutui-font-text)" /></View>
                 </View>
                 <View className={styles.userData}>

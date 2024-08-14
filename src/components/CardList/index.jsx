@@ -4,7 +4,7 @@ import Taro from "@tarojs/taro";
 import GbButton from "../GbButton";
 import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
-import { Avatar } from "@nutui/nutui-react-taro";
+import GbAvatar from "../GbAvatar";
 
 export default ({ type = 'SELF' }) => {
     return (
@@ -38,7 +38,7 @@ function CardItem() {
                     </View>
                 </View>
                 <View className={styles.right}>
-                    <Avatar size="large" />
+                    <GbAvatar />
                 </View>
             </View>
             <View className={styles.operate}>

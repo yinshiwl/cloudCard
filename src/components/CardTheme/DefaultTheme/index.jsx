@@ -1,9 +1,10 @@
 import { Text, View } from "@tarojs/components";
 import styles from "./index.module.scss";
-import { Avatar, FixedNav } from "@nutui/nutui-react-taro";
+import { FixedNav } from "@nutui/nutui-react-taro";
 import GbIcons from "../../GbIcons";
 import { useState } from "react";
 import classNames from "classnames";
+import GbAvatar from "../../GbAvatar";
 
 export default () => {
     return (
@@ -12,7 +13,7 @@ export default () => {
                 <View className={styles.cardInfo}>
                     <View className={styles.avatar_name}>
                         <View className={styles.avatar}>
-                            <Avatar size="large" />
+                            <GbAvatar />
                         </View>
                         <View className={styles.name}>
                             <Text className={styles.nameText}>姓名</Text>
