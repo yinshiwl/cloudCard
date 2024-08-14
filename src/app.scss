@@ -20,9 +20,20 @@ page {
     --app-text-color: var(--nutui-color-text);
     --app-text-color-primary: var(--nutui-color-primary-text);
     --app-danger-color: var(--nutui-color-danger);
+
+    //上传
     --nutui-uploader-image-width: 160rpx;
     --nutui-uploader-image-height: 160rpx;
     --nutui-uploader-image-border-radius: 16rpx;
     --nutui-uploader-image-icon-tip-font-size: 24rpx;
     --nutui-uploader-image-color: var(--app-text-color);
+
+    //头像
+    --nutui-avatar-square: 16rpx;
+    --nutui-avatar-large-width: 120rpx;
+    --nutui-avatar-large-height: 120rpx;
+    --nutui-avatar-small-width: 64rpx;
+    --nutui-avatar-small-height: 64rpx;
+    --nutui-avatar-normal-width: 80rpx;
+    --nutui-avatar-normal-height: 80rpx;
 }
