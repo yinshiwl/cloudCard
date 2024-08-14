@@ -5,6 +5,7 @@ import GbIcons from "../../GbIcons";
 import { useState } from "react";
 import classNames from "classnames";
 import GbAvatar from "../../GbAvatar";
+import GbImagePreview from "../../GbImagePreview";
 
 export default () => {
     return (
@@ -31,10 +32,16 @@ export default () => {
                     </View>
                 </View>
                 <View className={styles.otherInfo}>
-                    <GbIcons name="describe" />
-                    <Text className={styles.describe}>
-                        描述
-                    </Text>
+                    <View className={styles.item}>
+                        <GbIcons name="describe" />
+                        <Text className={styles.describe}>
+                            描述
+                        </Text>
+                    </View>
+                    <View className={styles.item}>
+                        <GbIcons name="images" />
+                        <GbImagePreview />
+                    </View>
                 </View>
             </View>
             <Operate />
