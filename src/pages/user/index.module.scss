@@ -53,3 +53,36 @@
         font-weight: bolder;
     }
 }
+
+.items {
+    margin: 20rpx;
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+    background: var(--app-card-background);
+    border-radius: 20rpx;
+    overflow: hidden;
+
+    :global {
+        .nut-cell-group-title {
+            margin: 20rpx 0 0 0;
+            color: var(--app-primary-color);
+            font-size: var(--nutui-font-text);
+            line-height: var(--nutui-font-text);
+            font-weight: bolder;
+        }
+
+        .nut-cell-group-wrap {
+            margin: unset;
+        }
+    }
+
+    .title,
+    .extra {
+        display: flex;
+        align-items: center;
+        gap: 10rpx;
+        font-size: var(--nutui-font-text-small);
+        line-height: var(--nutui-font-text);
+    }
+}
