@@ -5,7 +5,7 @@ export default ({ nativeType, shape = "square", size = "large", type = "primary"
     return (
         <Button nativeType={nativeType} shape={shape} size={size} type={type} style={{ ...style }} className={styles.root}
             onClick={async () => {
-                await onClick();
+                onClick && await onClick();
             }}>
             {children}
         </Button>

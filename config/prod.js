@@ -1,4 +1,7 @@
 export default {
+  defineConstants: {
+    YS_API_URL: JSON.stringify('http://localhost:8000'),
+  },
   mini: {},
   h5: {
     /**

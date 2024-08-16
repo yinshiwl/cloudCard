@@ -22,8 +22,19 @@ export default () => {
         Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
     }
 
-    const submitSucceed = (values) => {
-        Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
+    const submitSucceed = async (values) => {
+        console.log(values)
+        const resp = await utils.request({
+            api: '/api/card/create',
+            data: values,
+            success: (v) => {
+                console.log(v)
+            },
+            fail: (v) => {
+                console.log(v)
+            }
+        })
+        console.log(resp)
     }
 
     // 函数校验
@@ -67,7 +78,7 @@ export default () => {
                         <Form.Item
                             label="头像/LOGO"
                             name="avatar"
-                            rules={[{ required: true, message: '请上传个人头像或企业LOGO' }]}
+                            rules={[{ required: false, message: '请上传个人头像或企业LOGO' }]}
                         >
                             <View>
                                 <Uploader uploadIcon={<GbIcons name="image" size="large" />} />
@@ -75,7 +86,7 @@ export default () => {
                         </Form.Item>
                         <Form.Item
                             label="姓名"
-                            name="username"
+                            name="name"
                             rules={[{ required: true, message: '请输入姓名' }]}
                         >
                             <Input placeholder="请输入姓名" clearable type="text" />
@@ -106,7 +117,7 @@ export default () => {
                         </Form.Item>
                         <Form.Item
                             label="微信"
-                            name="wechat"
+                            name="weChat"
                         >
                             <View>
                                 <Input placeholder="请输入微信号" clearable type="text" />

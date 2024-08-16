@@ -15,6 +15,21 @@ class Utils {
     getOpenerEventChannel() {
         return Taro.getCurrentInstance().page.getOpenerEventChannel();
     }
+    async request({ api, method = 'POST', data, success, fail }) {
+        const url = `${YS_API_URL}${api}`
+        const resp = await Taro.request({
+            url,
+            method,
+            data,
+            success,
+            fail,
+            header: {
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            },
+        })
+        return resp;
+    }
 }
 const utils = new Utils();
 export default utils;
