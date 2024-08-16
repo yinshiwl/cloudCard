@@ -1,88 +1,95 @@
-.userInfo {
-    width: 100%;
-    padding: 40rpx;
-    display: flex;
-    align-items: center;
-    gap: 20rpx;
+.root {
+    //单元格
+    --nutui-cell-group-background-color: var(--app-card-background);
+    --nutui-cell-background-color: var(--app-card-background);
+    --nutui-cell-padding: 26rpx 32rpx;
 
-    .name {
-        color: var(--app-text-color-primary);
-        font-size: var(--nutui-font-text);
-        font-weight: bolder;
+    .userInfo {
+        width: 100%;
+        padding: 40rpx;
         display: flex;
         align-items: center;
-        gap: 10rpx;
-    }
-}
+        gap: 20rpx;
 
-.userData {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40rpx;
-
-    .item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5rpx;
-        font-size: var(--nutui-font-text-small);
-        color: var(--app-text-color-primary);
-        font-weight: bolder;
-    }
-}
-
-.more {
-    background: var(--app-card-background);
-    margin: 20rpx;
-    padding: 20rpx;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30rpx;
-    border-radius: var(--app-radius);
-
-    .item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5rpx;
-        font-size: var(--nutui-font-text-small);
-        color: var(--app-text-color);
-        font-weight: bolder;
-    }
-}
-
-.items {
-    margin: 20rpx;
-    display: flex;
-    flex-direction: column;
-    gap: 20rpx;
-    background: var(--app-card-background);
-    border-radius: 20rpx;
-    overflow: hidden;
-
-    :global {
-        .nut-cell-group-title {
-            margin: 20rpx 0 0 0;
-            color: var(--app-primary-color);
+        .name {
+            color: var(--app-text-color-primary);
             font-size: var(--nutui-font-text);
-            line-height: var(--nutui-font-text);
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            gap: 10rpx;
+        }
+    }
+
+    .userData {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40rpx;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5rpx;
+            font-size: var(--nutui-font-text-small);
+            color: var(--app-text-color-primary);
             font-weight: bolder;
         }
+    }
 
-        .nut-cell-group-wrap {
-            margin: unset;
+    .more {
+        background: var(--app-card-background);
+        margin: 20rpx;
+        padding: 20rpx;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30rpx;
+        border-radius: var(--app-radius);
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5rpx;
+            font-size: var(--nutui-font-text-small);
+            color: var(--app-text-color);
+            font-weight: bolder;
         }
     }
 
-    .title,
-    .extra {
+    .items {
+        margin: 20rpx;
         display: flex;
-        align-items: center;
-        gap: 10rpx;
-        font-size: var(--nutui-font-text-small);
-        line-height: var(--nutui-font-text);
+        flex-direction: column;
+        gap: 20rpx;
+        background: var(--app-card-background);
+        border-radius: 20rpx;
+        overflow: hidden;
+
+        :global {
+            .nut-cell-group-title {
+                margin: 20rpx 0 0 0;
+                color: var(--app-primary-color);
+                font-size: var(--nutui-font-text);
+                line-height: var(--nutui-font-text);
+                font-weight: bolder;
+            }
+
+            .nut-cell-group-wrap {
+                margin: unset;
+            }
+        }
+
+        .title,
+        .extra {
+            display: flex;
+            align-items: center;
+            gap: 10rpx;
+            font-size: var(--nutui-font-text-small);
+            line-height: var(--nutui-font-text);
+        }
     }
 }

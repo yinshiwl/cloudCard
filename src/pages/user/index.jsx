@@ -10,7 +10,7 @@ import GbIcons from '../../components/GbIcons';
 
 export default () => {
     return (
-        <View>
+        <View className={styles.root}>
             <Navbar title="用户中心" ></Navbar>
             <Body hasTabbar>
                 <View className={styles.userInfo}>

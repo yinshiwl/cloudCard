@@ -6,6 +6,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import GbAvatar from "../../GbAvatar";
 import GbImagePreview from "../../GbImagePreview";
+import Taro from "@tarojs/taro";
 
 export default () => {
     return (
@@ -25,10 +26,20 @@ export default () => {
                         公司
                     </View>
                     <View className={styles.moreInfo}>
-                        <Row icon="phone-fill" title="手机号" extra="打电话" />
+                        <Row icon="phone-fill" title="手机号" extra="打电话" onClick={() => {
+                            Taro.makePhoneCall({ phoneNumber: '17750594573' })
+                        }} />
                         <Row icon="weixin" title="微信号" extra="加微信" />
-                        <Row icon="email-fill" title="邮箱" extra="复制" />
-                        <Row icon="location-fill" title="地址" extra="地图" />
+                        <Row icon="email-fill" title="邮箱" extra="复制" onClick={() => {
+                            Taro.setClipboardData({ data: 'vip@yinshiwl.com' })
+                        }} />
+                        <Row icon="location-fill" title="地址" extra="地图" onClick={() => {
+                            Taro.openLocation({
+                                latitude: 39.906225696719844,
+                                longitude: 116.33766287293122,
+                                scale: 18
+                            })
+                        }} />
                     </View>
                 </View>
                 <View className={styles.otherInfo}>
@@ -50,9 +61,9 @@ export default () => {
     );
 }
 
-function Row({ icon, title, extra }) {
+function Row({ icon, title, extra, onClick }) {
     return (
-        <View className={styles.row}>
+        <View className={styles.row} onClick={onClick}>
             <View className={styles.left}>
                 <GbIcons name={icon} size="small" color="primary" />
                 <Text className={styles.title}>{title}</Text>

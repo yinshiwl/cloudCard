@@ -6,6 +6,11 @@ export default defineAppConfig({
     'pages/editCardInfo/index',
     'pages/editCard/index',
   ],
+  permission: {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置的效果展示"
+    }
+  },
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
