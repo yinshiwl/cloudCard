@@ -28,7 +28,11 @@ class Utils {
                 'content-type': 'application/json'
             },
         })
+        if (resp.data) return resp.data;
         return resp;
+    }
+    sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
     }
 }
 const utils = new Utils();

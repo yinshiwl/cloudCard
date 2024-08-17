@@ -5,11 +5,22 @@ import GbButton from "../GbButton";
 import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
 import GbAvatar from "../GbAvatar";
+import { Pagination } from "@nutui/nutui-react-taro";
 
-export default ({ type = 'SELF' }) => {
+export default ({ type = 'SELF', currentPage }) => {
+    const { data = [], page, total_count, pageSize } = currentPage || {}
     return (
         <View className={styles.root}>
-            <CardItem />
+            {data.map((item, index) => <CardItem key={index} />)}
+            {total_count > pageSize && <Pagination
+                value={page}
+                total={total_count}
+                pageSize={pageSize}
+                mode="simple"
+                onChange={(v) => {
+                    getData(v)
+                }}
+            />}
             {type === 'SELF' && <GbButton onClick={() => {
                 Taro.navigateTo({
                     url: '/pages/editCardInfo/index',

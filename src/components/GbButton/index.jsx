@@ -1,13 +1,15 @@
-import { Button } from "@nutui/nutui-react-taro";
+import { Button, Loading } from "@nutui/nutui-react-taro";
 import styles from "./index.module.scss"
 
-export default ({ nativeType, shape = "square", size = "large", type = "primary", style, onClick, children }) => {
+export default ({ nativeType, shape = "square", size = "large", type = "primary", style, onClick, loading, children }) => {
     return (
         <Button nativeType={nativeType} shape={shape} size={size} type={type} style={{ ...style }} className={styles.root}
             onClick={async () => {
-                onClick && await onClick();
+                if (loading) return
+                if (!onClick) return
+                await onClick();
             }}>
-            {children}
+            {loading ? <Loading type="circular" /> : children}
         </Button>
     );
 }

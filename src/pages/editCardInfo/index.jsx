@@ -5,12 +5,13 @@ import Body from "../../components/Body";
 import { useEffect, useState } from "react";
 import Taro from "@tarojs/taro";
 import utils from "../../utils";
-import { Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
+import { Dialog, Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
 import GbButton from "../../components/GbButton";
 import GbIcons from "../../components/GbIcons";
 
 export default () => {
     const [title, setTitle] = useState('')
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const eventChannel = utils.getOpenerEventChannel();
         eventChannel.on('editCardInfoPage', (data) => {
@@ -19,40 +20,39 @@ export default () => {
     }, [])
 
     const submitFailed = (error) => {
-        Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
+        Taro.showToast({ title: error[0].message, icon: 'error' })
     }
 
     const submitSucceed = async (values) => {
         console.log(values)
+        setLoading(true)
         const resp = await utils.request({
             api: '/api/card/create',
-            data: values,
-            success: (v) => {
-                console.log(v)
+            data: values
+        })
+        setLoading(false)
+
+        Dialog.open('saveCardDialog', {
+            title: '保存成功',
+            confirmText: '查看名片',
+            cancelText: '返回首页',
+            onConfirm: () => {
+                Taro.redirectTo({
+                    url: '/pages/editCard/index',
+                })
             },
-            fail: (v) => {
-                console.log(v)
-            }
+            onCancel: () => {
+                Taro.navigateBack({
+                    delta: 1
+                })
+            },
         })
         console.log(resp)
     }
 
-    // 函数校验
-    const customValidator = (
-        rule,
-        value
-    ) => {
-        return /^\d+$/.test(value)
-    }
-
-    const valueRangeValidator = (
-        rule,
-        value
-    ) => {
-        return /^(\d{1,2}|1\d{2}|200)$/.test(value)
-    }
     return (
         <View>
+            <Dialog id="saveCardDialog" closeOnOverlayClick={false} ></Dialog>
             <Navbar title={title} back background="var(--app-primary-color)" titleCenter ></Navbar>
             <Body>
                 <View className={styles.form}>
@@ -69,7 +69,7 @@ export default () => {
                                     width: '100%',
                                 }}
                             >
-                                <GbButton style={{ width: '100%' }} nativeType="submit">
+                                <GbButton style={{ width: '100%' }} nativeType="submit" loading={loading}>
                                     保存名片
                                 </GbButton>
                             </View>

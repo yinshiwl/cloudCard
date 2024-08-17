@@ -4,6 +4,10 @@
     flex-direction: column;
     gap: 20rpx;
 
+    :global(.nut-pagination) {
+        justify-content: center
+    }
+
     .cardItem {
         width: 100%;
         height: auto;
