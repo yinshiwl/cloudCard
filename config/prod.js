@@ -1,6 +1,6 @@
 export default {
   defineConstants: {
-    YS_API_URL: JSON.stringify('http://localhost:8000'),
+    YS_API_URL: JSON.stringify('http://cloud.yinshiwl.com'),
   },
   mini: {},
   h5: {
