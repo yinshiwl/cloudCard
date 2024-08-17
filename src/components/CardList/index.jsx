@@ -11,7 +11,7 @@ export default ({ type = 'SELF', currentPage }) => {
     const { data = [], page, total_count, pageSize } = currentPage || {}
     return (
         <View className={styles.root}>
-            {data.map((item, index) => <CardItem key={index} />)}
+            {data.map((item, index) => <CardItem key={index} item={item} />)}
             {total_count > pageSize && <Pagination
                 value={page}
                 total={total_count}
@@ -35,17 +35,18 @@ export default ({ type = 'SELF', currentPage }) => {
     );
 }
 
-function CardItem() {
+function CardItem({ item }) {
+    const { name = '姓名', position = '职位', company = '公司' } = item
     return (
         <View className={styles.cardItem}>
             <View className={styles.content}>
                 <View className={styles.left}>
                     <View className={styles.top}>
-                        <Text className={styles.name}>姓名</Text>
-                        <Text className={styles.position}>职位</Text>
+                        <Text className={styles.name}>{name}</Text>
+                        <Text className={styles.position}>{position}</Text>
                     </View>
                     <View className={styles.bottom}>
-                        <Text className={styles.company}>公司</Text>
+                        <Text className={styles.company}>{company}</Text>
                     </View>
                 </View>
                 <View className={styles.right}>
