@@ -13,30 +13,26 @@ import { useEffect, useRef, useState } from 'react';
 
 export default () => {
     const [userInfo, setUserInfo] = useState(null);
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState(Taro.getStorageSync('token'));
     const [dialogVisible, setDialogVisible] = useState(false);
-    const nicknameRef = useRef(null);
+
+    const [nickname, setNickname] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
+    const [avatarVersion, setAvatarVersion] = useState(0);
     const getUserInfo = async () => {
-        const token = Taro.getStorageSync('token');
         if (!token) return;
         const resp = await utils.request({
             api: '/api/user/info',
             data: { token },
         });
-        const { avatarUrl, nickname } = resp
-        setUserInfo({
-            avatarUrl: avatarUrl,
-            nickname: nickname,
-            token: token
-        });
+        setUserInfo(resp);
         Taro.setStorageSync('token', token)
     }
     useEffect(() => {
         getUserInfo();
     }, [])
-    const handleLogin = async () => {
-        if (Taro.getStorageSync('token')) {
+    const handleClickUserBlock = async () => {
+        if (token) {
             setDialogVisible(true);
             return;
         }
@@ -70,6 +66,57 @@ export default () => {
         }
         Taro.hideLoading();
     };
+    const onConfirm = async () => {
+        if (!avatarUrl && !userInfo?.avatarUrl) {
+            Taro.showToast({
+                title: '请上传头像',
+                icon: 'none',
+            });
+            return
+        }
+        if (!nickname && !userInfo?.nickname) {
+            Taro.showToast({
+                title: '请输入昵称',
+                icon: 'none',
+            });
+            return
+        }
+        Taro.showLoading({ title: userInfo?.token ? '修改中...' : '登录中...', mask: true });
+        let avatarUploadUrl = null
+        if (avatarUrl) {
+            await Taro.uploadFile({
+                url: `${YS_API_URL}/api/user/avatarUpload`,
+                filePath: avatarUrl,
+                name: 'file',
+                header: {
+                    'Content-Type': 'multipart/form-data',
+                    token: token || userInfo?.token,
+                },
+                success: function (res) {
+                    avatarUploadUrl = res.data
+                    setAvatarVersion(avatarVersion + 1)
+                }
+            })
+        }
+        const resp = await utils.request({
+            api: '/api/user/save',
+            data: {
+                token: token || userInfo?.token,
+                nickname: nickname || userInfo?.nickname,
+                avatarUrl: avatarUploadUrl || userInfo?.avatarUrl
+            },
+        });
+        Taro.hideLoading();
+        if (resp) {
+            setUserInfo(resp)
+            Taro.showToast({
+                title: userInfo?.token ? '修改成功' : '登录成功',
+                icon: 'none',
+            });
+            Taro.setStorageSync('token', resp.token)
+            setDialogVisible(false)
+        }
+    }
     return (
         <View className={styles.root}>
             <Dialog
@@ -78,62 +125,20 @@ export default () => {
                 closeOnOverlayClick={false}
                 confirmText={userInfo?.token ? '修改' : '登录'}
                 cancelText="取消"
-                onConfirm={async () => {
-                    Taro.showLoading({ title: userInfo?.token ? '修改中...' : '登录中...', mask: true });
-                    let avatarUploadUrl = null
-                    if (avatarUrl) {
-                        const uploadTask = await Taro.uploadFile({
-                            url: `${YS_API_URL}/api/user/avatarUpload`,
-                            filePath: avatarUrl,
-                            name: 'file',
-                            header: {
-                                'Content-Type': 'multipart/form-data',
-                                token: token || userInfo?.token,
-                            },
-                            success: function (res) {
-                                const avatarUrl = res.data
-                                console.log(res)
-                                avatarUploadUrl = avatarUrl
-                            }
-                        })
-                    }
-                    const resp = await utils.request({
-                        api: '/api/user/save',
-                        data: {
-                            token: token || userInfo?.token,
-                            nickname: nicknameRef.current.value || userInfo?.nickname,
-                            avatarUrl: avatarUploadUrl || userInfo?.avatarUrl
-                        },
-                    });
-                    Taro.hideLoading();
-                    if (resp) {
-                        const { avatarUrl, nickname, token } = resp
-                        setUserInfo({
-                            avatarUrl: avatarUrl,
-                            nickname: nickname,
-                            token: token
-                        })
-                        Taro.showToast({
-                            title: userInfo?.token ? '修改成功' : '登录成功',
-                            icon: 'none',
-                        });
-                        Taro.setStorageSync('token', token)
-                        setDialogVisible(false)
-                    }
-                }}
+                onConfirm={onConfirm}
                 onCancel={() => setDialogVisible(false)}
             >
                 <View className={styles.dialogContent}>
                     <Button openType='chooseAvatar' onChooseAvatar={(e) => setAvatarUrl(e.detail.avatarUrl)} className={styles.avatar}>
-                        <GbAvatar src={userInfo?.avatarUrl ? YS_API_URL + '/' + userInfo?.avatarUrl : avatarUrl} />
+                        <GbAvatar src={avatarUrl || (userInfo?.avatarUrl ? YS_API_URL + '/' + userInfo?.avatarUrl + '?v=' + avatarVersion : null)} />
                     </Button>
-                    <Input type='nickname' ref={nicknameRef} defaultValue={userInfo?.nickname} placeholder='请输入昵称' className={styles.nickname} />
+                    <Input type='nickname' defaultValue={nickname || userInfo?.nickname} onInput={(e) => setNickname(e.detail.value)} placeholder='请输入昵称' className={styles.nickname} />
                 </View>
             </Dialog>
             <Navbar title="用户中心" ></Navbar>
             <Body hasTabbar>
-                <View className={styles.userInfo} onClick={handleLogin}>
-                    <GbAvatar src={userInfo?.avatarUrl ? YS_API_URL + '/' + userInfo?.avatarUrl : null} />
+                <View className={styles.userInfo} onClick={handleClickUserBlock}>
+                    <GbAvatar src={userInfo?.avatarUrl ? YS_API_URL + '/' + userInfo?.avatarUrl + '?v=' + avatarVersion : null} />
                     <View className={styles.name}>{userInfo?.nickname || '微信登录授权'}<ArrowSize6 width="var(--nutui-font-text)" /></View>
                 </View>
                 {/* <View className={styles.userData}>
