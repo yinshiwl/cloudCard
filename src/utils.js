@@ -15,7 +15,7 @@ class Utils {
     getOpenerEventChannel() {
         return Taro.getCurrentInstance().page.getOpenerEventChannel();
     }
-    async request({ api, method = 'POST', data, success, fail }) {
+    async request({ api, method = 'POST', data, success, fail, header }) {
         const url = `${YS_API_URL}${api}`
         const resp = await Taro.request({
             url,
@@ -24,8 +24,10 @@ class Utils {
             success,
             fail,
             header: {
+                token: Taro.getStorageSync('token'),
                 'accept': 'application/json',
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                ...header
             },
         })
         if (resp.data) return resp.data;
