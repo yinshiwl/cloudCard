@@ -18,7 +18,7 @@ export default () => {
     total_count: 0,
     data: []
   });
-  const getData = async (page = 1) => {
+  const loadData = async (page = 1) => {
     const resp = await utils.request({
       api: '/api/card/page',
       data: {
@@ -29,13 +29,13 @@ export default () => {
     setCurrentPage(resp)
   }
   useEffect(() => {
-    getData();
+    loadData();
   }, [])
   return (
     <Page>
       <Navbar title="云联名片" />
       <Body hasTabbar>
-        {currentPage?.data?.length === 0 ? <Empty /> : <CardList currentPage={currentPage} />}
+        {currentPage?.data?.length === 0 ? <Empty /> : <CardList currentPage={currentPage} loadData={loadData} />}
       </Body>
       <Tabbar value={0} />
     </Page>

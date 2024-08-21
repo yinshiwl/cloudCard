@@ -5,21 +5,21 @@ import GbButton from "../GbButton";
 import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
 import GbAvatar from "../GbAvatar";
-import { Pagination } from "@nutui/nutui-react-taro";
+import { Dialog, Pagination } from "@nutui/nutui-react-taro";
 import utils from "../../utils";
 
-export default ({ type = 'SELF', currentPage }) => {
+export default ({ type = 'SELF', currentPage, loadData }) => {
     const { data = [], page, total_count, pageSize } = currentPage || {}
     return (
         <View className={styles.root}>
-            {data.map((item, index) => <CardItem key={index} item={item} />)}
+            {data.map((item, index) => <CardItem key={index} item={item} reloadData={() => { loadData && loadData(page) }} />)}
             {total_count > pageSize && <Pagination
                 value={page}
                 total={total_count}
                 pageSize={pageSize}
                 mode="simple"
                 onChange={(v) => {
-                    getData(v)
+                    loadData && loadData(v)
                 }}
             />}
             {type === 'SELF' && <GbButton onClick={() => {
@@ -36,7 +36,7 @@ export default ({ type = 'SELF', currentPage }) => {
     );
 }
 
-function CardItem({ item }) {
+function CardItem({ item, reloadData }) {
     const { name, position, company, _id } = item || {}
     return (
         <View className={styles.cardItem}>
@@ -78,10 +78,22 @@ function CardItem({ item }) {
                     <Text>查看</Text>
                 </View>
                 <View className={classNames(styles.operateItem, styles.delete)} onClick={async () => {
-                    const resp = await utils.request({
-                        api: '/api/card/delete',
-                        data: {
-                            id: _id
+                    Dialog.open('dialog', {
+                        title: '确认删除名片？',
+                        confirmText: '确认',
+                        cancelText: '取消',
+                        onConfirm: async () => {
+                            const resp = await utils.request({
+                                api: '/api/card/delete',
+                                data: {
+                                    id: _id
+                                }
+                            })
+                            Dialog.close('dialog')
+                            reloadData()
+                        },
+                        onCancel: () => {
+                            Dialog.close('dialog')
                         }
                     })
                 }}>
