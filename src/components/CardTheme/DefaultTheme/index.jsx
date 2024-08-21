@@ -1,6 +1,5 @@
 import { Text, View } from "@tarojs/components";
 import styles from "./index.module.scss";
-import { FixedNav } from "@nutui/nutui-react-taro";
 import GbIcons from "../../GbIcons";
 import { useState } from "react";
 import classNames from "classnames";
@@ -8,7 +7,8 @@ import GbAvatar from "../../GbAvatar";
 import GbImagePreview from "../../GbImagePreview";
 import Taro from "@tarojs/taro";
 
-export default () => {
+export default ({ cardInfo }) => {
+    const { name, position, company, description, phone, weChat, address, email } = cardInfo || {}
     return (
         <View className={styles.root}>
             <View className={styles.card}>
@@ -18,37 +18,37 @@ export default () => {
                             <GbAvatar />
                         </View>
                         <View className={styles.name}>
-                            <Text className={styles.nameText}>姓名</Text>
-                            <Text className={styles.position}>职位</Text>
+                            <Text className={styles.nameText}>{name}</Text>
+                            <Text className={styles.position}>{position}</Text>
                         </View>
                     </View>
                     <View className={styles.company}>
-                        公司
+                        {company}
                     </View>
                     <View className={styles.moreInfo}>
-                        <Row icon="phone-fill" title="手机号" extra="打电话" onClick={() => {
-                            Taro.makePhoneCall({ phoneNumber: '17750594573' })
-                        }} />
-                        <Row icon="weixin" title="微信号" extra="加微信" />
-                        <Row icon="email-fill" title="邮箱" extra="复制" onClick={() => {
-                            Taro.setClipboardData({ data: 'vip@yinshiwl.com' })
-                        }} />
-                        <Row icon="location-fill" title="地址" extra="地图" onClick={() => {
+                        {phone && <Row icon="phone-fill" title={phone} extra="打电话" onClick={() => {
+                            Taro.makePhoneCall({ phoneNumber: phone })
+                        }} />}
+                        {weChat && <Row icon="weixin" title={weChat} extra="加微信" />}
+                        {email && <Row icon="email-fill" title={email} extra="复制" onClick={() => {
+                            Taro.setClipboardData({ data: email })
+                        }} />}
+                        {address && <Row icon="location-fill" title={address} extra="地图" onClick={() => {
                             Taro.openLocation({
                                 latitude: 39.906225696719844,
                                 longitude: 116.33766287293122,
                                 scale: 18
                             })
-                        }} />
+                        }} />}
                     </View>
                 </View>
                 <View className={styles.otherInfo}>
-                    <View className={styles.item}>
+                    {description && <View className={styles.item}>
                         <GbIcons name="describe" />
                         <Text className={styles.describe}>
-                            描述
+                            {description}
                         </Text>
-                    </View>
+                    </View>}
                     <View className={styles.item}>
                         <GbIcons name="images" />
                         <GbImagePreview />
@@ -56,7 +56,6 @@ export default () => {
                 </View>
             </View>
             <Operate />
-            <BbFixedNav />
         </View>
     );
 }
@@ -73,50 +72,6 @@ function Row({ icon, title, extra, onClick }) {
                 <GbIcons name="arrow-right" size="small" color="primary" />
             </View>
         </View>
-    );
-}
-
-function BbFixedNav() {
-    const [visible, setVisible] = useState(true)
-    const list = [
-        {
-            id: 1,
-            text: '编辑资料',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-        {
-            id: 2,
-            text: '配置主题',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-        {
-            id: 3,
-            text: '预览名片',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-        {
-            id: 4,
-            text: '生成海报',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-    ]
-    const onChange = (value) => {
-        setVisible(value)
-    }
-    const onSelect = (item, event) => {
-        console.log(item, event)
-    }
-    return (
-        <FixedNav
-            type='left'
-            list={list}
-            inactiveText="展开"
-            activeText="收起"
-            visible={visible}
-            onChange={onChange}
-            onSelect={onSelect}
-            position={{ bottom: '52px' }}
-        />
     );
 }
 

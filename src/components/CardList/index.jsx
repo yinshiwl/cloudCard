@@ -36,7 +36,7 @@ export default ({ type = 'SELF', currentPage }) => {
 }
 
 function CardItem({ item }) {
-    const { name = '姓名', position = '职位', company = '公司' } = item
+    const { name, position, company } = item || {}
     return (
         <View className={styles.cardItem}>
             <View className={styles.content}>
@@ -55,12 +55,24 @@ function CardItem({ item }) {
             </View>
             <View className={styles.operate}>
                 <View className={styles.operateItem} onClick={() => {
-                    Taro.navigateTo({ url: '/pages/editCard/index' })
+                    Taro.navigateTo({
+                        url: '/pages/editCard/index',
+                        success: function (res) {
+                            res.eventChannel.emit('cardInfo', { data: item })
+                        }
+                    })
                 }}>
                     <Edit className={styles.icon} />
                     <Text>编辑</Text>
                 </View>
-                <View className={styles.operateItem}>
+                <View className={styles.operateItem} onClick={() => {
+                    Taro.navigateTo({
+                        url: '/pages/viewCard/index',
+                        success: function (res) {
+                            res.eventChannel.emit('cardInfo', { data: item })
+                        }
+                    })
+                }}>
                     <Eye className={styles.icon} />
                     <Text>查看</Text>
                 </View>
