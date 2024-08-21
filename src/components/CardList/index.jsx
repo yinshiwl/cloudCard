@@ -36,7 +36,7 @@ export default ({ type = 'SELF', currentPage }) => {
 }
 
 function CardItem({ item }) {
-    const { name, position, company } = item || {}
+    const { name, position, company, _id } = item || {}
     return (
         <View className={styles.cardItem}>
             <View className={styles.content}>
@@ -76,7 +76,14 @@ function CardItem({ item }) {
                     <Eye className={styles.icon} />
                     <Text>查看</Text>
                 </View>
-                <View className={classNames(styles.operateItem, styles.delete)}>
+                <View className={classNames(styles.operateItem, styles.delete)} onClick={async () => {
+                    const resp = await utils.request({
+                        api: '/api/card/delete',
+                        data: {
+                            id: _id
+                        }
+                    })
+                }}>
                     <Del className={styles.icon} />
                     <Text>删除</Text>
                 </View>
