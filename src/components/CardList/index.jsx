@@ -6,6 +6,7 @@ import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
 import GbAvatar from "../GbAvatar";
 import { Pagination } from "@nutui/nutui-react-taro";
+import utils from "../../utils";
 
 export default ({ type = 'SELF', currentPage }) => {
     const { data = [], page, total_count, pageSize } = currentPage || {}
