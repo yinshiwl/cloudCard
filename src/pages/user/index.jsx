@@ -62,7 +62,6 @@ export default () => {
                 title: '登录错误',
                 icon: 'none',
             });
-            console.error('登录失败:', error);
         }
         Taro.hideLoading();
     };

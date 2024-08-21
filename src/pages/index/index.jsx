@@ -26,7 +26,6 @@ export default () => {
       }
     })
     setCurrentPage(resp)
-    console.log(resp)
   }
   useEffect(() => {
     getData();

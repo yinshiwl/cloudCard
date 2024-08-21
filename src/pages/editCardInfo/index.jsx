@@ -24,7 +24,6 @@ export default () => {
     }
 
     const submitSucceed = async (values) => {
-        console.log(values)
         setLoading(true)
         const resp = await utils.request({
             api: '/api/card/create',
@@ -47,7 +46,6 @@ export default () => {
                 })
             },
         })
-        console.log(resp)
     }
 
     return (

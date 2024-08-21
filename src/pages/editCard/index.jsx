@@ -56,7 +56,6 @@ function BbFixedNav() {
         setVisible(value)
     }
     const onSelect = (item, event) => {
-        console.log(item, event)
     }
     return (
         <FixedNav
