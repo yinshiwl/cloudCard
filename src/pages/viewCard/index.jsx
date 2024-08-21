@@ -1,10 +1,10 @@
-import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import DefaultCard from "../../components/CardTheme/DefaultTheme";
 import utils from "../../utils";
 import { useEffect, useState } from "react";
+import Page from "../../components/Page";
 
 
 export default () => {
@@ -17,11 +17,11 @@ export default () => {
         })
     }, [])
     return (
-        <View>
+        <Page>
             <Navbar title={`${name}的名片`} back background="var(--app-primary-color)" titleCenter ></Navbar>
             <Body>
                 <DefaultCard cardInfo={cardInfo} />
             </Body>
-        </View>
+        </Page>
     );
 }

@@ -10,6 +10,7 @@ import GbIcons from '../../components/GbIcons';
 import Taro from '@tarojs/taro';
 import utils from '../../utils';
 import { useEffect, useRef, useState } from 'react';
+import Page from '../../components/Page';
 
 export default () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -117,7 +118,7 @@ export default () => {
         }
     }
     return (
-        <View className={styles.root}>
+        <Page className={styles.root}>
             <Dialog
                 title="头像昵称获取"
                 visible={dialogVisible}
@@ -289,6 +290,6 @@ export default () => {
                 </View>
             </Body>
             <Tabbar value={2} />
-        </View>
+        </Page>
     );
 }

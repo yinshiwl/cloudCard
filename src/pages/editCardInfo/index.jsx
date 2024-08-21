@@ -8,6 +8,7 @@ import utils from "../../utils";
 import { Dialog, Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
 import GbButton from "../../components/GbButton";
 import GbIcons from "../../components/GbIcons";
+import Page from "../../components/Page";
 
 export default () => {
     const [title, setTitle] = useState('')
@@ -31,7 +32,7 @@ export default () => {
         })
         setLoading(false)
 
-        Dialog.open('saveCardDialog', {
+        Dialog.open('dialog', {
             title: '保存成功',
             confirmText: '查看名片',
             cancelText: '返回首页',
@@ -49,8 +50,7 @@ export default () => {
     }
 
     return (
-        <View>
-            <Dialog id="saveCardDialog" closeOnOverlayClick={false} ></Dialog>
+        <Page>
             <Navbar title={title} back background="var(--app-primary-color)" titleCenter ></Navbar>
             <Body>
                 <View className={styles.form}>
@@ -143,6 +143,6 @@ export default () => {
                     </Form>
                 </View>
             </Body>
-        </View>
+        </Page>
     );
 }

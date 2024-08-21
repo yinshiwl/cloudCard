@@ -9,6 +9,7 @@ import GbButton from '../../components/GbButton'
 import CardList from '../../components/CardList'
 import GbIcons from '../../components/GbIcons'
 import utils from '../../utils'
+import Page from '../../components/Page'
 
 export default () => {
   const [currentPage, setCurrentPage] = useState({
@@ -31,13 +32,13 @@ export default () => {
     getData();
   }, [])
   return (
-    <View>
+    <Page>
       <Navbar title="云联名片" />
       <Body hasTabbar>
         {currentPage?.data?.length === 0 ? <Empty /> : <CardList currentPage={currentPage} />}
       </Body>
       <Tabbar value={0} />
-    </View>
+    </Page>
   )
 }
 
