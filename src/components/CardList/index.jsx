@@ -89,6 +89,8 @@ function CardItem({ item, reloadData }) {
                                     id: _id
                                 }
                             })
+                            if (resp.status !== 0) return;
+                            Taro.showToast({ title: resp.message, icon: 'success' })
                             Dialog.close('dialog')
                             reloadData()
                         },

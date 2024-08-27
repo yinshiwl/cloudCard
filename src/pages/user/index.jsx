@@ -26,7 +26,8 @@ export default () => {
             api: '/api/user/info',
             data: { token },
         });
-        setUserInfo(resp);
+        if (resp.status !== 0) return;
+        setUserInfo(resp.model);
         Taro.setStorageSync('token', token)
     }
     useEffect(() => {
@@ -48,15 +49,9 @@ export default () => {
                     api: '/api/auth/login',
                     data: { code },
                 });
-                if (resp && resp.token) {
-                    setToken(resp.token);
-                    setDialogVisible(true);
-                } else {
-                    Taro.showToast({
-                        title: '登录失败，请重试',
-                        icon: 'none',
-                    });
-                }
+                if (resp.status !== 0) return;
+                setToken(resp.model.token);
+                setDialogVisible(true);
             }
         } catch (error) {
             Taro.showToast({
@@ -107,15 +102,14 @@ export default () => {
             },
         });
         Taro.hideLoading();
-        if (resp) {
-            setUserInfo(resp)
-            Taro.showToast({
-                title: userInfo?.token ? '修改成功' : '登录成功',
-                icon: 'none',
-            });
-            Taro.setStorageSync('token', resp.token)
-            setDialogVisible(false)
-        }
+        if (resp.status !== 0) return;
+        setUserInfo(resp.model)
+        Taro.showToast({
+            title: userInfo?.token ? '修改成功' : '登录成功',
+            icon: 'none',
+        });
+        Taro.setStorageSync('token', resp.model.token)
+        setDialogVisible(false)
     }
     return (
         <Page className={styles.root}>

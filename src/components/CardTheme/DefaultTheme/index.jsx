@@ -1,11 +1,13 @@
 import { Text, View } from "@tarojs/components";
 import styles from "./index.module.scss";
 import GbIcons from "../../GbIcons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import GbAvatar from "../../GbAvatar";
 import GbImagePreview from "../../GbImagePreview";
 import Taro from "@tarojs/taro";
+import utils from "../../../utils";
+import { Loading } from "@nutui/nutui-react-taro";
 
 export default ({ cardInfo }) => {
     const { name, position, company, description, phone, weChat, address, email } = cardInfo || {}
@@ -55,7 +57,7 @@ export default ({ cardInfo }) => {
                     </View>
                 </View>
             </View>
-            <Operate />
+            <Operate cardInfo={cardInfo} />
         </View>
     );
 }
@@ -75,31 +77,49 @@ function Row({ icon, title, extra, onClick }) {
     );
 }
 
-function Operate() {
-    const [collect, setCollect] = useState(false)
-    const [like, setLike] = useState(false)
+function Operate({ cardInfo }) {
+    const [loading, setLoading] = useState(false);
+    const [_cardInfo, setCardInfo] = useState(cardInfo);
+    const { liked = false, collected = false, likeCount = 0, collectCount = 0, browseCount = 0, _id } = _cardInfo || {};
+    useEffect(() => {
+        setCardInfo(cardInfo)
+    }, [cardInfo])
     return (
         <View className={styles.operate}>
             <View className={classNames(styles.operateItem, styles.disableClick)}>
                 <View className={styles.value}>
                     <GbIcons name="eye" />
-                    <Text className={styles.valueText}>2k</Text>
+                    <Text className={styles.valueText}>{browseCount}</Text>
                 </View>
                 <Text>浏览</Text>
             </View>
-            <View className={classNames(styles.operateItem, { [styles.collect]: collect })} onClick={() => setCollect(!collect)}>
+            <View className={classNames(styles.operateItem, { [styles.collect]: collected })} onClick={async () => {
+                if (loading) return
+                setLoading(true);
+                const resp = await utils.onCollect(_id, !collected)
+                setLoading(false);
+                if (resp.status !== 0) return
+                setCardInfo({ ..._cardInfo, collected: !collected, collectCount: collectCount + (collected ? -1 : 1) })
+            }}>
                 <View className={styles.value}>
-                    <GbIcons name={collect ? "star-fill" : "star"} color={collect ? "var(--nutui-orange-6)" : null} />
-                    <Text className={styles.valueText}>2k</Text>
+                    <GbIcons name={collected ? "star-fill" : "star"} color={collected ? "var(--nutui-orange-6)" : null} />
+                    <Text className={styles.valueText}>{collectCount}</Text>
                 </View>
-                <Text>收藏</Text>
+                <Text>{loading ? <Loading type="circular" /> : '收藏'}</Text>
             </View>
-            <View className={classNames(styles.operateItem, { [styles.like]: like })} onClick={() => setLike(!like)}>
+            <View className={classNames(styles.operateItem, { [styles.like]: liked })} onClick={async () => {
+                if (loading) return
+                setLoading(true);
+                const resp = await utils.onLike(_id, !liked)
+                setLoading(false);
+                if (resp.status !== 0) return
+                setCardInfo({ ..._cardInfo, liked: !liked, likeCount: likeCount + (liked ? -1 : 1) })
+            }}>
                 <View className={styles.value}>
-                    <GbIcons name={like ? "love-fill" : "love"} color={like ? "var(--nutui-red-8)" : null} />
-                    <Text className={styles.valueText}>2k</Text>
+                    <GbIcons name={liked ? "love-fill" : "love"} color={liked ? "var(--nutui-red-8)" : null} />
+                    <Text className={styles.valueText}>{likeCount}</Text>
                 </View>
-                <Text>点赞</Text>
+                <Text>{loading ? <Loading type="circular" /> : '点赞'}</Text>
             </View>
         </View>
     );

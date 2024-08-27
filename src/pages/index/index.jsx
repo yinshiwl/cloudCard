@@ -8,7 +8,7 @@ import Taro from '@tarojs/taro'
 import GbButton from '../../components/GbButton'
 import CardList from '../../components/CardList'
 import GbIcons from '../../components/GbIcons'
-import utils from '../../utils'
+import utils, { config } from '../../utils'
 import Page from '../../components/Page'
 
 export default () => {
@@ -26,11 +26,16 @@ export default () => {
         pageSize: 10
       }
     })
-    setCurrentPage(resp)
+    if (resp.status !== 0) return;
+    setCurrentPage(resp?.model || currentPage)
   }
   useEffect(() => {
     loadData();
   }, [])
+  useEffect(() => {
+    config.reloadCardPage = loadData;
+    config.currentCardPage = currentPage;
+  }, [currentPage])
   return (
     <Page>
       <Navbar title="云联名片" />

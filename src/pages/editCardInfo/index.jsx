@@ -13,6 +13,7 @@ import Page from "../../components/Page";
 export default () => {
     const [title, setTitle] = useState('')
     const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
     useEffect(() => {
         const eventChannel = utils.getOpenerEventChannel();
         eventChannel.on('editCardInfoPage', (data) => {
@@ -26,11 +27,13 @@ export default () => {
 
     const submitSucceed = async (values) => {
         setLoading(true)
+        console.log(values)
         const resp = await utils.request({
             api: '/api/card/create',
             data: values
         })
         setLoading(false)
+        if (resp.status !== 0) return;
 
         Dialog.open('dialog', {
             title: '保存成功',
@@ -55,6 +58,7 @@ export default () => {
             <Body>
                 <View className={styles.form}>
                     <Form
+                        form={form}
                         divider
                         labelPosition="left"
                         onFinish={(values) => submitSucceed(values)}
@@ -118,8 +122,14 @@ export default () => {
                             name="weChat"
                         >
                             <View>
-                                <Input placeholder="请输入微信号" clearable type="text" />
-                                <Uploader style={{ marginTop: '30rpx' }} uploadLabel="上传二维码" uploadIcon={<GbIcons name="qrcode" size="large" />} />
+                                <Input placeholder="请输入微信号" clearable type="text" onChange={(v) => {
+                                    console.log(v)
+                                    form.setFieldsValue({ 'weChat': v.detail })
+                                }} />
+                                <Uploader style={{ marginTop: '30rpx' }} uploadLabel="上传二维码" uploadIcon={<GbIcons name="qrcode" size="large" />} onChange={(v) => {
+                                    console.log(v)
+                                    form.setFieldsValue({ 'weChatQrcode': v.detail })
+                                }} />
                             </View>
                         </Form.Item>
                         <Form.Item
