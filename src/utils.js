@@ -97,4 +97,6 @@ export default utils;
 export const config = {
     reloadCardPage: null,
     currentCardPage: null,
+    reloadCollectPage: null,
+    currentCollectPage: null
 }
