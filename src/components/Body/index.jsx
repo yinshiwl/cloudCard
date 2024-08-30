@@ -1,5 +1,5 @@
 import { View } from "@tarojs/components";
-import utils from "../../utils";
+import utils from "../../common/utils";
 import styles from "./index.module.scss"
 import { SafeArea } from "@nutui/nutui-react-taro";
 

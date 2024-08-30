@@ -5,7 +5,7 @@ import styles from "./index.module.scss"
 import CardList from "../../components/CardList";
 import Page from "../../components/Page";
 import { useEffect, useState } from "react";
-import utils, { config } from "../../utils";
+import utils, { config } from "../../common/utils";
 import { Text, View } from "@tarojs/components";
 import GbIcons from "../../components/GbIcons";
 

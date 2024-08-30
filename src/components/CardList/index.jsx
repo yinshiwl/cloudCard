@@ -6,7 +6,7 @@ import { Edit, Eye, Del } from '@nutui/icons-react-taro'
 import classNames from "classnames";
 import GbAvatar from "../GbAvatar";
 import { Dialog, Pagination } from "@nutui/nutui-react-taro";
-import utils from "../../utils";
+import utils from "../../common/utils";
 
 export default ({ type = 'SELF', currentPage, loadData }) => {
     const { data = [], page, total_count, pageSize } = currentPage || {}
@@ -23,12 +23,7 @@ export default ({ type = 'SELF', currentPage, loadData }) => {
                 }}
             />}
             {type === 'SELF' && <GbButton onClick={() => {
-                Taro.navigateTo({
-                    url: '/pages/editCardInfo/index',
-                    success: function (res) {
-                        res.eventChannel.emit('editCardInfoPage', { data: { type: 'CREATE' } })
-                    }
-                })
+                Taro.navigateTo({ url: '/pages/editCardInfo/index' })
             }}>
                 添加名片
             </GbButton>}
@@ -37,7 +32,7 @@ export default ({ type = 'SELF', currentPage, loadData }) => {
 }
 
 function CardItem({ type, item, reloadData }) {
-    const { name, position, company, _id } = item || {}
+    const { name, position, company, id } = item || {}
     return (
         <View className={styles.cardItem}>
             <View className={styles.content}>
@@ -56,23 +51,13 @@ function CardItem({ type, item, reloadData }) {
             </View>
             <View className={styles.operate}>
                 {type === 'SELF' && <View className={styles.operateItem} onClick={() => {
-                    Taro.navigateTo({
-                        url: '/pages/editCard/index',
-                        success: function (res) {
-                            res.eventChannel.emit('cardInfo', { data: item })
-                        }
-                    })
+                    Taro.navigateTo({ url: '/pages/editCard/index?id=' + id })
                 }}>
                     <Edit className={styles.icon} />
                     <Text>编辑</Text>
                 </View>}
                 <View className={styles.operateItem} onClick={() => {
-                    Taro.navigateTo({
-                        url: '/pages/viewCard/index',
-                        success: function (res) {
-                            res.eventChannel.emit('cardInfo', { data: item })
-                        }
-                    })
+                    Taro.navigateTo({ url: '/pages/viewCard/index?id=' + id })
                 }}>
                     <Eye className={styles.icon} />
                     <Text>查看</Text>
@@ -84,9 +69,10 @@ function CardItem({ type, item, reloadData }) {
                         cancelText: '取消',
                         onConfirm: async () => {
                             const resp = await utils.request({
-                                api: '/api/card/delete',
+                                api: '/api/card/save',
                                 data: {
-                                    id: _id
+                                    id,
+                                    deleted: true
                                 }
                             })
                             if (resp.status !== 0) return;
@@ -108,7 +94,7 @@ function CardItem({ type, item, reloadData }) {
                         confirmText: '确认',
                         cancelText: '取消',
                         onConfirm: async () => {
-                            const resp = await utils.onCollect(_id, false)
+                            const resp = await utils.onCollect(id, false)
                             if (resp.status !== 0) return;
                             Taro.showToast({ title: "取消收藏成功", icon: 'success' })
                             Dialog.close('dialog')

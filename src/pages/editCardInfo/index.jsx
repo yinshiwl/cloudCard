@@ -3,8 +3,8 @@ import styles from "./index.module.scss";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import { useEffect, useState } from "react";
-import Taro from "@tarojs/taro";
-import utils from "../../utils";
+import Taro, { useRouter } from "@tarojs/taro";
+import utils from "../../common/utils";
 import { Dialog, Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
 import GbButton from "../../components/GbButton";
 import GbIcons from "../../components/GbIcons";
@@ -14,12 +14,12 @@ export default () => {
     const [title, setTitle] = useState('')
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
+    const router = useRouter();
+    const { id, type } = router.params || {}
     useEffect(() => {
-        const eventChannel = utils.getOpenerEventChannel();
-        eventChannel.on('editCardInfoPage', (data) => {
-            setTitle(data.data.type === 'CREATE' ? '创建名片' : '编辑名片')
-        })
-    }, [])
+        setTitle(id ? '编辑名片' : '创建名片')
+
+    }, [type])
 
     const submitFailed = (error) => {
         Taro.showToast({ title: error[0].message, icon: 'error' })
@@ -29,20 +29,18 @@ export default () => {
         setLoading(true)
         console.log(values)
         const resp = await utils.request({
-            api: '/api/card/create',
+            api: '/api/card/save',
             data: values
         })
         setLoading(false)
         if (resp.status !== 0) return;
-
+        utils.reloadCardPage();
         Dialog.open('dialog', {
             title: '保存成功',
             confirmText: '查看名片',
             cancelText: '返回首页',
             onConfirm: () => {
-                Taro.redirectTo({
-                    url: '/pages/editCard/index',
-                })
+                Taro.redirectTo({ url: '/pages/editCard/index?id=' + resp.model.id })
             },
             onCancel: () => {
                 Taro.navigateBack({

@@ -2,60 +2,60 @@ import styles from "./index.module.scss";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import DefaultCard from "../../components/CardTheme/DefaultTheme";
-import utils from "../../utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FixedNav } from "@nutui/nutui-react-taro";
 import Page from "../../components/Page";
+import { useRouter } from "@tarojs/taro";
+import useCardData from "../../common/hooks/useCardData";
 
 
 export default () => {
-    const [cardInfo, setCardInfo] = useState(null);
+    const router = useRouter();
+    const { id } = router.params;
+    const { cardInfo } = useCardData({ id })
     const { name } = cardInfo || {}
-    useEffect(() => {
-        const eventChannel = utils.getOpenerEventChannel();
-        eventChannel.on('cardInfo', (data) => {
-            setCardInfo(data.data)
-        })
-    }, [])
+
     return (
         <Page>
             <Navbar title={`${name}的名片`} back background="var(--app-primary-color)" titleCenter ></Navbar>
             <Body>
                 <DefaultCard cardInfo={cardInfo} />
-                <BbFixedNav />
+                <BbFixedNav cardInfo={cardInfo} />
             </Body>
         </Page>
     );
 }
 
-function BbFixedNav() {
+function BbFixedNav({ cardInfo }) {
     const [visible, setVisible] = useState(true)
+    const { id } = cardInfo || {}
     const list = [
         {
             id: 1,
             text: '编辑资料',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
+            icon: `${YS_API_URL}/assets/images/edit.svg`,
         },
-        {
-            id: 2,
-            text: '配置主题',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-        {
-            id: 3,
-            text: '预览名片',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
-        {
-            id: 4,
-            text: '生成海报',
-            icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
-        },
+        // {
+        //     id: 2,
+        //     text: '配置主题',
+        //     icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
+        // },
+        // {
+        //     id: 3,
+        //     text: '预览名片',
+        //     icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
+        // },
+        // {
+        //     id: 4,
+        //     text: '生成海报',
+        //     icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
+        // },
     ]
     const onChange = (value) => {
         setVisible(value)
     }
     const onSelect = (item, event) => {
+        Taro.navigateTo({ url: '/pages/editCardInfo/index?id=' + id })
     }
     return (
         <FixedNav

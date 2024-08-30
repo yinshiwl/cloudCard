@@ -6,7 +6,7 @@ import classNames from "classnames";
 import GbAvatar from "../../GbAvatar";
 import GbImagePreview from "../../GbImagePreview";
 import Taro from "@tarojs/taro";
-import utils from "../../../utils";
+import utils from "../../../common/utils";
 import { Loading } from "@nutui/nutui-react-taro";
 
 export default ({ cardInfo }) => {
@@ -80,7 +80,7 @@ function Row({ icon, title, extra, onClick }) {
 function Operate({ cardInfo }) {
     const [loading, setLoading] = useState(false);
     const [_cardInfo, setCardInfo] = useState(cardInfo);
-    const { liked = false, collected = false, likeCount = 0, collectCount = 0, browseCount = 0, _id } = _cardInfo || {};
+    const { liked = false, collected = false, likeCount = 0, collectCount = 0, browseCount = 0, id } = _cardInfo || {};
     useEffect(() => {
         setCardInfo(cardInfo)
     }, [cardInfo])
@@ -96,7 +96,7 @@ function Operate({ cardInfo }) {
             <View className={classNames(styles.operateItem, { [styles.collect]: collected })} onClick={async () => {
                 if (loading) return
                 setLoading(true);
-                const resp = await utils.onCollect(_id, !collected)
+                const resp = await utils.onCollect(id, !collected)
                 setLoading(false);
                 if (resp.status !== 0) return
                 setCardInfo({ ..._cardInfo, collected: !collected, collectCount: collectCount + (collected ? -1 : 1) })
@@ -110,7 +110,7 @@ function Operate({ cardInfo }) {
             <View className={classNames(styles.operateItem, { [styles.like]: liked })} onClick={async () => {
                 if (loading) return
                 setLoading(true);
-                const resp = await utils.onLike(_id, !liked)
+                const resp = await utils.onLike(id, !liked)
                 setLoading(false);
                 if (resp.status !== 0) return
                 setCardInfo({ ..._cardInfo, liked: !liked, likeCount: likeCount + (liked ? -1 : 1) })

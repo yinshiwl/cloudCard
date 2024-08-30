@@ -25,38 +25,42 @@ class Utils {
             success,
             fail,
             header: {
-                token: Taro.getStorageSync('token'),
+                token: this.getToken(),
                 'accept': 'application/json',
                 'content-type': 'application/json',
                 ...header
             },
         })
         showLoading && Taro.hideLoading();
-        if (resp.statusCode !== 200 && !showAlert) {
+        const { data: respData, statusCode } = resp || {};
+        if (statusCode !== 200 && !showAlert) {
             console.error(resp)
             return {
-                status: resp.statusCode,
+                status: statusCode,
                 message: '请求错误',
             }
         }
-        if (resp.statusCode !== 200) {
+        if (statusCode !== 200) {
             console.error(resp)
             Taro.showToast({
                 title: '请求错误',
                 icon: 'error',
             });
             return {
-                status: resp.statusCode,
+                status: statusCode,
                 message: '请求错误',
             };
         }
-        if (resp?.data?.status !== 0 && showAlert) {
+        if (respData?.status !== 0 && showAlert) {
             Taro.showToast({
-                title: resp?.data?.message,
+                title: respData?.message,
                 icon: 'error',
             });
         }
-        if (resp.data) return resp.data;
+        if (respData?.status === 401) {
+            this.setToken(null)
+        }
+        if (respData) return respData;
         return {
             status: 9999,
             message: '未知错误',
@@ -87,8 +91,25 @@ class Utils {
         })
         return resp;
     }
+    async onBrowse(id) {
+        const resp = await this.request({
+            api: '/api/card/browse',
+            data: {
+                cardId: id
+            },
+            showLoading: false
+        })
+        return resp;
+    }
     reloadCardPage() {
         config?.reloadCardPage?.(config?.currentCardPage?.page ?? 1)
+    }
+    getToken() {
+        const token = Taro.getStorageSync('token')
+        return token || ""
+    }
+    setToken(token) {
+        Taro.setStorageSync('token', token || null)
     }
 }
 const utils = new Utils();

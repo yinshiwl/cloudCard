@@ -1,5 +1,5 @@
 import { View } from "@tarojs/components";
-import utils from "../../utils";
+import utils from "../../common/utils";
 import { ArrowLeft } from '@nutui/icons-react-taro'
 import styles from "./index.module.scss"
 import Taro from "@tarojs/taro";

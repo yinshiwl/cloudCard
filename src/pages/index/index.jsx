@@ -8,7 +8,7 @@ import Taro from '@tarojs/taro'
 import GbButton from '../../components/GbButton'
 import CardList from '../../components/CardList'
 import GbIcons from '../../components/GbIcons'
-import utils, { config } from '../../utils'
+import utils, { config } from '../../common/utils'
 import Page from '../../components/Page'
 
 export default () => {
@@ -24,7 +24,8 @@ export default () => {
       data: {
         page: page,
         pageSize: 10
-      }
+      },
+      showAlert: false
     })
     if (resp.status !== 0) return;
     setCurrentPage(resp?.model || currentPage)
@@ -58,12 +59,7 @@ function Empty() {
         赶快来创建一张名片吧
       </Text>
       <GbButton style={{ marginTop: '20rpx', width: '70%' }} onClick={() => {
-        Taro.navigateTo({
-          url: '/pages/editCardInfo/index',
-          success: function (res) {
-            res.eventChannel.emit('editCardInfoPage', { data: { type: 'CREATE' } })
-          }
-        })
+        Taro.navigateTo({ url: '/pages/editCardInfo/index' })
       }}>
         创建名片
       </GbButton>

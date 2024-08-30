@@ -8,33 +8,30 @@ import GbAvatar from '../../components/GbAvatar';
 import { Cell, Dialog } from '@nutui/nutui-react-taro';
 import GbIcons from '../../components/GbIcons';
 import Taro from '@tarojs/taro';
-import utils from '../../utils';
+import utils from '../../common/utils';
 import { useEffect, useRef, useState } from 'react';
 import Page from '../../components/Page';
 
 export default () => {
     const [userInfo, setUserInfo] = useState(null);
-    const [token, setToken] = useState(Taro.getStorageSync('token'));
     const [dialogVisible, setDialogVisible] = useState(false);
 
     const [nickname, setNickname] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [avatarVersion, setAvatarVersion] = useState(0);
     const getUserInfo = async () => {
-        if (!token) return;
-        const resp = await utils.request({
-            api: '/api/user/info',
-            data: { token },
-        });
-        if (resp.status !== 0) return;
+        if (!utils.getToken()) return;
+        const resp = await utils.request({ api: '/api/user/info', showAlert: false });
+        if (resp.status !== 0) return resp;
         setUserInfo(resp.model);
-        Taro.setStorageSync('token', token)
+        utils.setToken(resp.model.token);
+        return resp;
     }
     useEffect(() => {
         getUserInfo();
     }, [])
     const handleClickUserBlock = async () => {
-        if (token) {
+        if (utils.getToken()) {
             setDialogVisible(true);
             return;
         }
@@ -50,8 +47,11 @@ export default () => {
                     data: { code },
                 });
                 if (resp.status !== 0) return;
-                setToken(resp.model.token);
-                setDialogVisible(true);
+                utils.setToken(resp.model.token);
+                const user_resp = await getUserInfo();
+                if (user_resp.status !== 0) {
+                    setDialogVisible(true);
+                }
             }
         } catch (error) {
             Taro.showToast({
@@ -85,7 +85,7 @@ export default () => {
                 name: 'file',
                 header: {
                     'Content-Type': 'multipart/form-data',
-                    token: token || userInfo?.token,
+                    token: utils.getToken(),
                 },
                 success: function (res) {
                     avatarUploadUrl = res.data
@@ -96,9 +96,8 @@ export default () => {
         const resp = await utils.request({
             api: '/api/user/save',
             data: {
-                token: token || userInfo?.token,
-                nickname: nickname || userInfo?.nickname,
-                avatarUrl: avatarUploadUrl || userInfo?.avatarUrl
+                ...(nickname && { nickname }),
+                ...(avatarUploadUrl && { avatarUrl: avatarUploadUrl })
             },
         });
         Taro.hideLoading();
@@ -108,7 +107,7 @@ export default () => {
             title: userInfo?.token ? '修改成功' : '登录成功',
             icon: 'none',
         });
-        Taro.setStorageSync('token', resp.model.token)
+        utils.setToken(resp.model.token)
         setDialogVisible(false)
     }
     return (
@@ -120,7 +119,10 @@ export default () => {
                 confirmText={userInfo?.token ? '修改' : '登录'}
                 cancelText="取消"
                 onConfirm={onConfirm}
-                onCancel={() => setDialogVisible(false)}
+                onCancel={() => {
+                    !userInfo?.token && utils.setToken(null)
+                    setDialogVisible(false)
+                }}
             >
                 <View className={styles.dialogContent}>
                     <Button openType='chooseAvatar' onChooseAvatar={(e) => setAvatarUrl(e.detail.avatarUrl)} className={styles.avatar}>
