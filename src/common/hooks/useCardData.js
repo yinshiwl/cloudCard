@@ -3,7 +3,7 @@ import utils from "../utils";
 
 
 
-export default ({ id }) => {
+export default ({ id, isBrowse = true }) => {
     const [cardInfo, setCardInfo] = useState(null);
 
     const getCardInfo = async (cardId) => {
@@ -16,6 +16,7 @@ export default ({ id }) => {
     }
     useEffect(() => {
         if (!id) return;
+        if (isBrowse) utils.onBrowse(id);
         getCardInfo(id);
     }, [id])
     return { cardInfo, getCardInfo }
