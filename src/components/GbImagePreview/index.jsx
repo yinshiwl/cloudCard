@@ -35,10 +35,10 @@ export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, u
                     src={utils.getFileUrl(image)}
                     alt={image}
                 >
-                    <GbIcons name="close_2" size="40rpx" className={styles.delete} onClick={(e) => {
+                    {isUpload && <GbIcons name="close_2" size="40rpx" className={styles.delete} onClick={(e) => {
                         e.stopPropagation()
                         setImageList([...imageList.filter(item => item !== image)])
-                    }} />
+                    }} />}
                 </Image>
             ))}
             <Uploader uploadLength={uploadLength} uploadIcon={uploadIcon} uploadLabel={uploadLabel} imageList={imageList} setImageList={setImageList} />

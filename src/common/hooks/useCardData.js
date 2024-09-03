@@ -21,7 +21,7 @@ export default (props) => {
         if (isBrowse) utils.onBrowse(id);
     }, [id, isBrowse])
     useDidShow(() => {
-        if (autoLoad) getCardInfo(id);
+        if (autoLoad && id) getCardInfo(id);
     })
     return { cardInfo, getCardInfo }
 }
