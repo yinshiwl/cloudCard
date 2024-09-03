@@ -5,16 +5,15 @@ import DefaultCard from "../../components/CardTheme/DefaultTheme";
 import { useState } from "react";
 import { FixedNav } from "@nutui/nutui-react-taro";
 import Page from "../../components/Page";
-import { useRouter } from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import useCardData from "../../common/hooks/useCardData";
 
 
 export default () => {
     const router = useRouter();
     const { id } = router.params;
-    const { cardInfo } = useCardData({ id })
+    const { cardInfo } = useCardData({ id, isBrowse: true })
     const { name } = cardInfo || {}
-
     return (
         <Page>
             <Navbar title={`${name}的名片`} back background="var(--app-primary-color)" titleCenter ></Navbar>

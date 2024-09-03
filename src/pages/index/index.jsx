@@ -8,40 +8,16 @@ import Taro from '@tarojs/taro'
 import GbButton from '../../components/GbButton'
 import CardList from '../../components/CardList'
 import GbIcons from '../../components/GbIcons'
-import utils, { config } from '../../common/utils'
 import Page from '../../components/Page'
+import useCardPage from '../../common/hooks/useCardPage'
 
 export default () => {
-  const [currentPage, setCurrentPage] = useState({
-    page: 1,
-    pageSize: 10,
-    total_count: 0,
-    data: []
-  });
-  const loadData = async (page = 1) => {
-    const resp = await utils.request({
-      api: '/api/card/page',
-      data: {
-        page: page,
-        pageSize: 10
-      },
-      showAlert: false
-    })
-    if (resp.status !== 0) return;
-    setCurrentPage(resp?.model || currentPage)
-  }
-  useEffect(() => {
-    loadData();
-  }, [])
-  useEffect(() => {
-    config.reloadCardPage = loadData;
-    config.currentCardPage = currentPage;
-  }, [currentPage])
+  const { cardPage, getCardPage } = useCardPage();
   return (
     <Page>
       <Navbar title="云联名片" />
       <Body hasTabbar>
-        {currentPage?.data?.length === 0 ? <Empty /> : <CardList currentPage={currentPage} loadData={loadData} />}
+        {cardPage?.data?.length === 0 ? <Empty /> : <CardList currentPage={cardPage} loadData={getCardPage} />}
       </Body>
       <Tabbar value={0} />
     </Page>

@@ -4,41 +4,21 @@ import Body from "../../components/Body";
 import styles from "./index.module.scss"
 import CardList from "../../components/CardList";
 import Page from "../../components/Page";
-import { useEffect, useState } from "react";
-import utils, { config } from "../../common/utils";
+import { useMemo } from "react";
 import { Text, View } from "@tarojs/components";
 import GbIcons from "../../components/GbIcons";
+import useCardPage from "../../common/hooks/useCardPage";
 
 export default () => {
-    const [currentPage, setCurrentPage] = useState({
-        page: 1,
-        pageSize: 10,
-        total_count: 0,
-        data: []
-    });
-    const loadData = async (page = 1) => {
-        const resp = await utils.request({
-            api: '/api/card/collect/page',
-            data: {
-                page: page,
-                pageSize: 10
-            }
-        })
-        if (resp.status !== 0) return;
-        setCurrentPage(resp?.model || currentPage)
-    }
-    useEffect(() => {
-        loadData();
-    }, [])
-    useEffect(() => {
-        config.reloadCollectPage = loadData;
-        config.currentCollectPage = currentPage;
-    }, [currentPage])
+    const type = useMemo(() => {
+        return 'COLLECT'
+    })
+    const { cardPage, getCardPage } = useCardPage({ type });
     return (
         <Page className={styles.root}>
             <Navbar title="我的收藏" ></Navbar>
             <Body hasTabbar>
-                {currentPage?.data?.length === 0 ? <Empty /> : <CardList type="COLLECT" currentPage={currentPage} loadData={loadData} />}
+                {cardPage?.data?.length === 0 ? <Empty /> : <CardList type={type} currentPage={cardPage} loadData={getCardPage} />}
             </Body>
             <Tabbar value={1} />
         </Page>

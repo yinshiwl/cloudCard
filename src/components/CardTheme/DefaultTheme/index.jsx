@@ -10,14 +10,14 @@ import utils from "../../../common/utils";
 import { Loading } from "@nutui/nutui-react-taro";
 
 export default ({ cardInfo }) => {
-    const { name, position, company, description, phone, weChat, address, email } = cardInfo || {}
+    const { name, position, company, description, phone, weChat, address, email, avatar, album } = cardInfo || {}
     return (
         <View className={styles.root}>
             <View className={styles.card}>
                 <View className={styles.cardInfo}>
                     <View className={styles.avatar_name}>
                         <View className={styles.avatar}>
-                            <GbAvatar />
+                            <GbAvatar src={utils.getFileUrl(avatar)} />
                         </View>
                         <View className={styles.name}>
                             <Text className={styles.nameText}>{name}</Text>
@@ -53,7 +53,7 @@ export default ({ cardInfo }) => {
                     </View>}
                     <View className={styles.item}>
                         <GbIcons name="images" />
-                        <GbImagePreview />
+                        <GbImagePreview imageList={album} />
                     </View>
                 </View>
             </View>

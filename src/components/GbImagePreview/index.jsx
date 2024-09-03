@@ -2,57 +2,99 @@ import { Image, ImagePreview } from "@nutui/nutui-react-taro";
 import { View } from "@tarojs/components"
 import { useMemo, useState } from "react";
 import styles from "./index.module.scss";
+import Taro from "@tarojs/taro";
+import utils from "../../common/utils";
+import { config } from "../../common/config";
+import GbIcons from "../GbIcons";
 
-export default ({ }) => {
-    const images = useMemo(() => {
-        return [
-            {
-                src: '//fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg',
-            },
-            {
-                src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
-            },
-            {
-                src: '//fastly.jsdelivr.net/npm/@vant/assets/apple-4.jpeg',
-            }
-        ]
-    }, [])
+export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, uploadIcon, uploadLabel, ...restProps }) => {
     const [init, setInit] = useState(0)
     const [showPreview, setShowPreview] = useState(false)
+
+    const imagePreview = useMemo(() => {
+        if (!imageList.length) return []
+        return imageList.map(image => {
+            return { src: utils.getFileUrl(image) }
+        })
+    }, [imageList])
+    const isUpload = useMemo(() => {
+        return uploadLength > 0
+    }, [uploadLength])
     return (
-        <View className={styles.root}>
-            {images.map((image, index) => (
+        <View className={styles.root} style={{
+            "--part-grid-columns": columns,
+            "--part-grid-gap": isUpload ? '40rpx' : '10rpx',
+        }}>
+            {imageList.map((image, index) => (
                 <Image
                     key={index}
                     onClick={() => {
                         setShowPreview(true)
                         setInit(index + 1)
                     }}
-                    style={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        left: 0
-                    }}
-                    src={image.src}
-                    alt={image.src}
-                />
+                    src={utils.getFileUrl(image)}
+                    alt={image}
+                >
+                    <GbIcons name="close_2" size="40rpx" className={styles.delete} onClick={(e) => {
+                        e.stopPropagation()
+                        setImageList([...imageList.filter(item => item !== image)])
+                    }} />
+                </Image>
             ))}
+            <Uploader uploadLength={uploadLength} uploadIcon={uploadIcon} uploadLabel={uploadLabel} imageList={imageList} setImageList={setImageList} />
             <ImagePreview
                 autoPlay={false}
-                images={images}
+                images={imagePreview}
                 visible={showPreview}
                 defaultValue={init}
                 onClose={() => setShowPreview(false)}
                 indicator={true}
+                closeOnContentClick={true}
             />
+        </View>
+    );
+}
+
+
+function Uploader({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) {
+    const showUpload = useMemo(() => {
+        if (!uploadLength) return false
+        return imageList.length < uploadLength
+    }, [imageList, uploadLength])
+    if (!showUpload) return null
+    return (
+        <View className={styles.uploadWrapper} onClick={() => {
+            Taro.chooseImage({
+                count: uploadLength - imageList.length,
+                success(res) {
+                    Taro.showLoading({ title: '上传中...', mask: true });
+                    const tempFiles = res.tempFiles;
+                    let beyondSize = 0
+                    const uploadTasks = tempFiles.map(({ path: filePath, size }) => {
+                        if (size > config.uploadMaxSize) {
+                            beyondSize += 1;
+                            return null;
+                        }
+                        return utils.fileUpload(filePath);
+                    });
+                    Promise.all(uploadTasks.filter((x => x)))
+                        .then(results => {
+                            Taro.hideLoading();
+                            if (beyondSize) {
+                                Taro.showToast({
+                                    title: `${beyondSize}张图超过${config.uploadMaxSize / 1024 / 1024}M`,
+                                    icon: 'none',
+                                });
+                            }
+                            setImageList([...imageList, ...results])
+                        })
+                }
+            })
+        }}>
+            <View className={styles.upload} >
+                {uploadIcon}
+                {uploadLabel}
+            </View>
         </View>
     );
 }

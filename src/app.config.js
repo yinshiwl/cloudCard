@@ -32,5 +32,6 @@ export default defineAppConfig({
       }
     ]
   },
-  usingComponents: {}
+  usingComponents: {},
+  lazyCodeLoading: "requiredComponents"
 })

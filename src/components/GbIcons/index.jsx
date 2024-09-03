@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { IconFont } from "@nutui/icons-react-taro";
 
 // https://www.iconfont.cn/
-export default ({ name, size = 'default', color = 'default' }) => {
+export default ({ name, size = 'default', color = 'default', ...restProps }) => {
     const sizeA = useMemo(() => {
         switch (size) {
             case 'large':
@@ -30,6 +30,6 @@ export default ({ name, size = 'default', color = 'default' }) => {
         }
     }, [color])
     return (
-        <IconFont fontClassName="iconfont" classPrefix="icon" name={name} size={sizeA} color={colorA} style={{ lineHeight: sizeA }} />
+        <IconFont fontClassName="iconfont" classPrefix="icon" name={name} size={sizeA} color={colorA} style={{ lineHeight: sizeA }} {...restProps} />
     );
 }

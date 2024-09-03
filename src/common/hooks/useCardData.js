@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import utils from "../utils";
+import { useDidShow } from "@tarojs/taro";
 
 
 
-export default ({ id, isBrowse = true }) => {
+export default (props) => {
+    const { id, isBrowse = false, autoLoad = true } = props || {};
     const [cardInfo, setCardInfo] = useState(null);
 
     const getCardInfo = async (cardId) => {
@@ -17,7 +19,9 @@ export default ({ id, isBrowse = true }) => {
     useEffect(() => {
         if (!id) return;
         if (isBrowse) utils.onBrowse(id);
-        getCardInfo(id);
-    }, [id])
+    }, [id, isBrowse])
+    useDidShow(() => {
+        if (autoLoad) getCardInfo(id);
+    })
     return { cardInfo, getCardInfo }
 }

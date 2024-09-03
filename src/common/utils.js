@@ -101,9 +101,6 @@ class Utils {
         })
         return resp;
     }
-    reloadCardPage() {
-        config?.reloadCardPage?.(config?.currentCardPage?.page ?? 1)
-    }
     getToken() {
         const token = Taro.getStorageSync('token')
         return token || ""
@@ -111,13 +108,29 @@ class Utils {
     setToken(token) {
         Taro.setStorageSync('token', token || null)
     }
+    async fileUpload(file) {
+        if (!file) return
+        const resp = await Taro.uploadFile({
+            url: `${YS_API_URL}/api/file/upload`,
+            filePath: file,
+            name: 'file',
+            header: {
+                'Content-Type': 'multipart/form-data',
+                token: this.getToken(),
+            },
+        }).then(res => {
+            const resp = JSON.parse(res.data)
+            return resp?.model?.fileId;
+        }).catch(err => {
+            console.error('Upload failed:', err);
+            throw err;
+        });
+        return resp
+    }
+    getFileUrl(fileId) {
+        if (!fileId) return null
+        return `${YS_API_URL}/api/file/${fileId}`
+    }
 }
 const utils = new Utils();
 export default utils;
-
-export const config = {
-    reloadCardPage: null,
-    currentCardPage: null,
-    reloadCollectPage: null,
-    currentCollectPage: null
-}

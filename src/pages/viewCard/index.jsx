@@ -10,7 +10,7 @@ import { useRouter } from "@tarojs/taro";
 export default () => {
     const router = useRouter();
     const { id } = router.params;
-    const { cardInfo } = useCardData({ id })
+    const { cardInfo } = useCardData({ id, isBrowse: true })
     const { name } = cardInfo || {}
 
     return (
