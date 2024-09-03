@@ -1,15 +1,15 @@
-import { Button, Input, Text, View } from '@tarojs/components'
+import { Button, Input, View } from '@tarojs/components'
 import styles from "./index.module.scss"
 import Tabbar from '../../components/Tabbar';
 import Navbar from '../../components/Navbar';
 import Body from '../../components/Body';
-import { ArrowSize6, Headphones } from '@nutui/icons-react-taro'
+import { ArrowSize6 } from '@nutui/icons-react-taro'
 import GbAvatar from '../../components/GbAvatar';
 import { Cell, Dialog } from '@nutui/nutui-react-taro';
 import GbIcons from '../../components/GbIcons';
 import Taro from '@tarojs/taro';
 import utils from '../../common/utils';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Page from '../../components/Page';
 
 export default () => {
@@ -137,114 +137,83 @@ export default () => {
                     <GbAvatar src={userInfo?.avatarUrl ? YS_API_URL + '/' + userInfo?.avatarUrl + '?v=' + avatarVersion : null} />
                     <View className={styles.name}>{userInfo?.nickname || '微信登录授权'}<ArrowSize6 width="var(--nutui-font-text)" /></View>
                 </View>
-                {/* <View className={styles.userData}>
-                    <View className={styles.item}>
-                        <Text>0</Text>
-                        <Text>关注</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Text>0</Text>
-                        <Text>关注</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Text>0</Text>
-                        <Text>关注</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Text>0</Text>
-                        <Text>关注</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Text>0</Text>
-                        <Text>关注</Text>
-                    </View>
-                </View> */}
-                {/* <View className={styles.more}>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                    <View className={styles.item}>
-                        <Headphones />
-                        <Text>客户服务</Text>
-                    </View>
-                </View> */}
                 <View className={styles.items}>
-                    <Cell.Group title="联系">
+                    <Cell.Group title="数据">
                         <Cell
                             title={
                                 <View className={styles.title}>
-                                    <GbIcons name="weixin" color="var(--app-primary-color)" />
-                                    微信客服
+                                    我的名片数量
                                 </View>
                             }
                             align="center"
                             extra={
                                 <View className={styles.extra}>
-                                    ys113664
-                                    <GbIcons name="arrow-right" />
+                                    {userInfo?.cardCount || 0}
                                 </View>
                             }
                         />
                         <Cell
                             title={
                                 <View className={styles.title}>
-                                    <GbIcons name="weixin" color="var(--app-primary-color)" />
-                                    微信客服
+                                    收藏名片数量
                                 </View>
                             }
                             align="center"
                             extra={
                                 <View className={styles.extra}>
-                                    ys113664
-                                    <GbIcons name="arrow-right" />
+                                    {userInfo?.collectCardCount || 0}
                                 </View>
                             }
                         />
                         <Cell
                             title={
                                 <View className={styles.title}>
-                                    <GbIcons name="weixin" color="var(--app-primary-color)" />
-                                    微信客服
+                                    点赞名片数量
                                 </View>
                             }
                             align="center"
                             extra={
                                 <View className={styles.extra}>
-                                    ys113664
-                                    <GbIcons name="arrow-right" />
+                                    {userInfo?.likeCardCount || 0}
+                                </View>
+                            }
+                        />
+                        <Cell
+                            title={
+                                <View className={styles.title}>
+                                    我的名片被收藏数量
+                                </View>
+                            }
+                            align="center"
+                            extra={
+                                <View className={styles.extra}>
+                                    {userInfo?.cardCollectCount || 0}
+                                </View>
+                            }
+                        />
+                        <Cell
+                            title={
+                                <View className={styles.title}>
+                                    我的名片被点赞数量
+                                </View>
+                            }
+                            align="center"
+                            extra={
+                                <View className={styles.extra}>
+                                    {userInfo?.cardLikeCount || 0}
+                                </View>
+                            }
+                        />
+                        <Cell
+                            title={
+                                <View className={styles.title}>
+                                    我的名片被浏览数量
+                                </View>
+                            }
+                            align="center"
+                            extra={
+                                <View className={styles.extra}>
+                                    {userInfo?.cardBrowseCount || 0}
                                 </View>
                             }
                         />
@@ -252,21 +221,6 @@ export default () => {
                 </View>
                 <View className={styles.items}>
                     <Cell.Group title="联系">
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    <GbIcons name="weixin" color="var(--app-primary-color)" />
-                                    微信客服
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    ys113664
-                                    <GbIcons name="arrow-right" />
-                                </View>
-                            }
-                        />
                         <Cell
                             title={
                                 <View className={styles.title}>
