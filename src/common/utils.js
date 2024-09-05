@@ -57,7 +57,7 @@ class Utils {
                 icon: 'error',
             });
         }
-        if (respData?.status === 401) {
+        if (respData?.status === 401 && api !== '/api/user/info') {
             this.setToken(null)
         }
         if (respData) return respData;

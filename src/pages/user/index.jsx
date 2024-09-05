@@ -43,7 +43,7 @@ export default () => {
             if (code) {
                 // 将 code 发送到后端，获取用户的 session 信息
                 const resp = await utils.request({
-                    api: '/api/auth/login',
+                    api: '/api/user/login',
                     data: { code },
                 });
                 if (resp.status !== 0) return;

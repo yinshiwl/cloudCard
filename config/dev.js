@@ -1,6 +1,6 @@
 export default {
   defineConstants: {
-    YS_API_URL: JSON.stringify('http://127.0.0.1:8000'),
+    YS_API_URL: JSON.stringify('https://cloud.yinshiwl.com'),
   },
   logger: {
     quiet: false,
