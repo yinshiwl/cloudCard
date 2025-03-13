@@ -4,6 +4,7 @@ import Taro from '@tarojs/taro'
 import { useCallback, useMemo } from 'react';
 
 export default ({ value }) => {
+    // test
     const iconSize = useMemo(() => {
         return 20;
     }, [])
