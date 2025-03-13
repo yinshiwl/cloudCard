@@ -11,6 +11,7 @@ import Taro from '@tarojs/taro';
 import utils from '../../common/utils';
 import { useEffect, useState } from 'react';
 import Page from '../../components/Page';
+import { userDataList } from './data';
 
 export default () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -139,84 +140,27 @@ export default () => {
                 </View>
                 <View className={styles.items}>
                     <Cell.Group title="数据">
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    我的名片数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.cardCount || 0}
-                                </View>
-                            }
-                        />
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    收藏名片数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.collectCardCount || 0}
-                                </View>
-                            }
-                        />
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    点赞名片数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.likeCardCount || 0}
-                                </View>
-                            }
-                        />
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    我的名片被收藏数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.cardCollectCount || 0}
-                                </View>
-                            }
-                        />
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    我的名片被点赞数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.cardLikeCount || 0}
-                                </View>
-                            }
-                        />
-                        <Cell
-                            title={
-                                <View className={styles.title}>
-                                    我的名片被浏览数量
-                                </View>
-                            }
-                            align="center"
-                            extra={
-                                <View className={styles.extra}>
-                                    {userInfo?.cardBrowseCount || 0}
-                                </View>
-                            }
-                        />
+                        {
+                            userDataList.map((item, index) => {
+                                const { label, field } = item
+                                return (
+                                    <Cell
+                                        key={index}
+                                        title={
+                                            <View className={styles.title}>
+                                                {label}
+                                            </View>
+                                        }
+                                        align="center"
+                                        extra={
+                                            <View className={styles.extra}>
+                                                {userInfo?.[field] || 0}
+                                            </View>
+                                        }
+                                    />
+                                )
+                            })
+                        }
                     </Cell.Group>
                 </View>
                 <View className={styles.items}>
