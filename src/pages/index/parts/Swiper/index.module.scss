@@ -1,0 +1,8 @@
+.swiper {
+    width: "100%";
+    padding: 20rpx;
+
+    :global(.wx-swiper-wrapper) {
+        border-radius: 40rpx;
+    }
+}
