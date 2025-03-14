@@ -1,0 +1,21 @@
+.root {
+    padding: 40rpx 20rpx;
+
+    .category {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10rpx;
+
+            .name {
+                font-size: 30rpx;
+                font-weight: bolder;
+            }
+        }
+    }
+}
