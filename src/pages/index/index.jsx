@@ -7,7 +7,7 @@ import Swiper from './parts/Swiper'
 export default () => {
   return (
     <Page>
-      <Navbar title="云联名片" />
+      <Navbar title="游乐玩指" />
       <Body hasTabbar>
         <Swiper />
       </Body>

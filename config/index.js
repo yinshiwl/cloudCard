@@ -10,7 +10,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       //腾讯位置服务key
       LOCATION_APIKEY: JSON.stringify('U6LBZ-TVDRB-TRBUW-JIDQM-67BI6-LPB32')
     },
-    projectName: '云联名片',
+    projectName: '游乐玩指',
     date: '2024-8-9',
     designWidth: 375,
     deviceRatio: {
