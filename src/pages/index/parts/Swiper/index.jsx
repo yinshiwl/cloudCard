@@ -1,4 +1,4 @@
-import { Swiper } from "@nutui/nutui-react-taro";
+import { Swiper as NutuiSwiper } from "@nutui/nutui-react-taro";
 import styles from "./index.module.scss";
 import { View } from "@tarojs/components";
 
@@ -14,7 +14,7 @@ const Swiper = () => {
     }
     return (
         <View className={styles.swiper}>
-            <Swiper
+            <NutuiSwiper
                 defaultValue={1}
                 autoPlay
                 indicator
@@ -23,7 +23,7 @@ const Swiper = () => {
                 onChange={onChange}
             >
                 {list.map((item, index) => (
-                    <Swiper.Item key={item}>
+                    <NutuiSwiper.Item key={item}>
                         <img
                             width="100%"
                             height="100%"
@@ -31,9 +31,9 @@ const Swiper = () => {
                             src={item}
                             alt=""
                         />
-                    </Swiper.Item>
+                    </NutuiSwiper.Item>
                 ))}
-            </Swiper>
+            </NutuiSwiper>
         </View>
     );
 }
