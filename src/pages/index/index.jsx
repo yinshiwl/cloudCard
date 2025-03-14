@@ -4,6 +4,7 @@ import Body from '../../components/Body'
 import Page from '../../components/Page'
 import Swiper from './parts/Swiper'
 import Category from './parts/Category'
+import NoticeBar from './parts/NoticeBar'
 
 export default () => {
   return (
@@ -12,6 +13,7 @@ export default () => {
       <Body hasTabbar>
         <Swiper />
         <Category />
+        <NoticeBar />
       </Body>
       <Tabbar value={0} />
     </Page>
