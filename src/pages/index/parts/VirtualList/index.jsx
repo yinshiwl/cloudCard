@@ -1,6 +1,7 @@
 import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
+import GameCard from "../GameCard";
 
 const VirtualList = () => {
     const [list, setList] = useState([]);
@@ -20,7 +21,7 @@ const VirtualList = () => {
     const renderItem = (item, index) => {
         return (
             <View key={index} className={styles.item}>
-                {item}
+                <GameCard />
             </View>
         );
     };

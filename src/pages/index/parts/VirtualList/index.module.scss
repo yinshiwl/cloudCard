@@ -1,11 +1,7 @@
 .content {
-    height: 100%;
+    flex: 1;
     overflow-y: auto;
-    border: 1rpx solid #ccc;
 
     .item {
-        height: 30rpx;
-        line-height: 30rpx;
-        padding: 0 10rpx;
     }
 }
