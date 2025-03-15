@@ -14,7 +14,7 @@ const GameCard = () => {
                 <View className={styles.desc}>游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介</View>
                 <View className={styles.other}>名额充足</View>
             </View>
-            <Button className={styles.button} type="primary">立即申请</Button>
+            <Button className={styles.button} type="primary">申请</Button>
         </View>
     );
 }
