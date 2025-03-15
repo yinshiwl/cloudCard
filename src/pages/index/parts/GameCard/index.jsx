@@ -1,52 +1,20 @@
 import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
-import { Grid, Image } from "@nutui/nutui-react-taro";
+import { Button, Image } from "@nutui/nutui-react-taro";
 
 
 const GameCard = () => {
-
-    const LeftBar = () => {
-        return (
-            <View className={styles.left}>
-                <Image className={styles.img} width="100rpx" height="100rpx" src='https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png' />
-                {/* <img src='https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png' alt="头像" /> */}
-            </View>
-        );
-    };
-
-    const MiddleBar = () => {
-        return (
-            <View className={styles.middle}>
-                <p>这是一个很好玩的游戏</p>
-            </View>
-        );
-    };
-
-    const RightBar = () => {
-        return (
-            <View className={styles.right}>
-                <button>按钮</button>
-            </View>
-        );
-    };
+    const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png';
 
     return (
         <View className={styles.root}>
-
-            {/* <Grid columns={3} className="grid">
-                <Grid.Item >
-                    <Image className={styles.img} width="100rpx" height="100rpx" src={src}/>
-                </Grid.Item>
-                <Grid.Item text="这是一个很好玩的游戏">
-                </Grid.Item>
-                <Grid.Item text="推荐">
-                </Grid.Item>
-            </Grid> */}
-            <View className={styles.three}>
-                <LeftBar />
-                <MiddleBar />
-                <RightBar />
+            <Image className={styles.img} width="100rpx" height="100rpx" src={src} />
+            <View className={styles.content}>
+                <View className={styles.title}>游戏名称</View>
+                <View className={styles.desc}>游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介游戏简介</View>
+                <View className={styles.other}>其他信息</View>
             </View>
+            <Button className={styles.button} type="primary">按钮</Button>
         </View>
     );
 }
