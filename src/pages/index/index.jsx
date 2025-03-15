@@ -5,6 +5,8 @@ import Page from '../../components/Page'
 import Swiper from './parts/Swiper'
 import Category from './parts/Category'
 import NoticeBar from './parts/NoticeBar'
+import VirtualList from './parts/VirtualList'
+import GameCard from './parts/GameCard'
 
 export default () => {
   return (
@@ -14,6 +16,8 @@ export default () => {
         <Swiper />
         <Category />
         <NoticeBar />
+        {/* <VirtualList /> */}
+        <GameCard />
       </Body>
       <Tabbar value={0} />
     </Page>
