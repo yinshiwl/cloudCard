@@ -22,8 +22,8 @@ const NoticeBar = () => {
                 height={30}
                 rightIcon={<ArrowSize6 />}
                 onClick={(e) => {
+                    console.log(e)
                 }}
-                closeable
             />
         </View>
     );
