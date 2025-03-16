@@ -2,6 +2,7 @@ import { Ellipsis, NoticeBar as NutuiNoticeBar } from '@nutui/nutui-react-taro'
 import { ArrowSize6 } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components';
 import styles from "./index.module.scss";
+import Taro from '@tarojs/taro';
 
 const NoticeBar = () => {
     const horseLamp1 = [
@@ -22,7 +23,7 @@ const NoticeBar = () => {
                 height={30}
                 rightIcon={<ArrowSize6 />}
                 onClick={(e) => {
-                    console.log(e)
+                    Taro.navigateTo({ url: '/pages/notify/index' })
                 }}
             />
         </View>
