@@ -7,6 +7,7 @@ export default defineAppConfig({
     'pages/editCard/index',
     'pages/viewCard/index',
     'pages/notify/index',
+    'pages/categoryAll/index',
   ],
   permission: {
     "scope.userLocation": {
