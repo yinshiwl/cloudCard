@@ -6,7 +6,6 @@ import Swiper from './parts/Swiper'
 import Category from './parts/Category'
 import NoticeBar from './parts/NoticeBar'
 import VirtualList from './parts/VirtualList'
-import BackTop from './parts/BackTop'
 
 export default () => {
   return (
@@ -17,7 +16,6 @@ export default () => {
         <Category />
         <NoticeBar />
         <VirtualList />
-        <BackTop />
       </Body>
       <Tabbar value={0} />
     </Page>
