@@ -1,4 +1,5 @@
 import Taro from "@tarojs/taro"
+import dayjs from "dayjs"
 
 class Utils {
     getNavBarData() {
@@ -130,6 +131,16 @@ class Utils {
     getFileUrl(fileId) {
         if (!fileId) return null
         return `${YS_API_URL}/api/file/${fileId}`
+    }
+    formatTime(timestamp, format = 'YYYY-MM-DD HH:mm:ss') {
+        // 判断时间戳是否为秒级（10 位）
+        if (timestamp.toString().length === 10) {
+            timestamp = timestamp * 1000; // 转换为毫秒级时间戳
+        }
+
+        // 格式化时间
+        const formatted = dayjs(timestamp).format(format);
+        return formatted;
     }
 }
 const utils = new Utils();
