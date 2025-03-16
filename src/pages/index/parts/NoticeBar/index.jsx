@@ -11,6 +11,9 @@ const NoticeBar = () => {
         'DatePicker 日期选择器EDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
         'CheckBox 复选按钮',
     ]
+    const onClick = () => {
+        Taro.navigateTo({ url: '/pages/notify/index' })
+    }
     return (
         <View className={styles.root}>
             <NutuiNoticeBar
@@ -21,10 +24,8 @@ const NoticeBar = () => {
                 speed={10}
                 duration={1000}
                 height={30}
-                rightIcon={<ArrowSize6 />}
-                onClick={(e) => {
-                    Taro.navigateTo({ url: '/pages/notify/index' })
-                }}
+                rightIcon={<ArrowSize6 onClick={onClick} />}
+                onClick={onClick}
             />
         </View>
     );
