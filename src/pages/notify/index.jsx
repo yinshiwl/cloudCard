@@ -8,7 +8,7 @@ import styles from "./index.module.scss"
 export default () => {
     const list = [
         {
-            title: '一名男子程序员加班三天三夜，回家发现自己的老婆是个女子！',
+            title: '男子程序员加班三天三夜，回家发现自己老婆是个女子！',
             time: '1742123304',
         },
         {
