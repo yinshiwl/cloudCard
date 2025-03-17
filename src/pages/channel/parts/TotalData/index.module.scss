@@ -1,0 +1,35 @@
+.root {
+    padding: 40rpx;
+
+    .title {
+        font-size: 35rpx;
+        font-weight: bolder;
+        color: #000;
+    }
+
+    .items {
+        padding-top: 20rpx;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20rpx;
+
+        .item {
+            display: flex;
+            gap: 20rpx;
+            align-items: center;
+
+            .icon{
+                color: #e67e22;
+            }
+
+            .label {
+                color: #00000080;
+            }
+
+            .value {
+                padding-left: 10rpx;
+                color: red;
+            }
+        }
+    }
+}
