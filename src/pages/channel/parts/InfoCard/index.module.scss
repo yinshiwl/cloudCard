@@ -1,0 +1,34 @@
+.root {
+    padding: 60rpx 20rpx 40rpx 20rpx;
+    display: flex;
+    gap: 20rpx;
+
+    .card {
+        flex: 1;
+        border-radius: 20rpx;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20rpx 10rpx;
+
+        &.one {
+            background: #ff7675;
+        }
+
+        &.two {
+            background: #f7d794;
+        }
+
+        &.three {
+            background: #70a1ff;
+        }
+
+        .text {
+            font-size: var(--nutui-font-text-small);
+            padding: 15rpx 0;
+            color: #fff;
+        }
+    }
+}

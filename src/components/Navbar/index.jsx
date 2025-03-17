@@ -4,7 +4,7 @@ import { ArrowLeft } from '@nutui/icons-react-taro'
 import styles from "./index.module.scss"
 import Taro from "@tarojs/taro";
 
-export default ({ title, background, back, color, titleCenter }) => {
+export default ({ title, background, back, color, titleCenter, fontSize }) => {
     const { navBarHeight, statusBarHeight, paddingX } = utils.getNavBarData();
     return (
         <View className={styles.root} style={{
@@ -13,7 +13,13 @@ export default ({ title, background, back, color, titleCenter }) => {
             background: background ?? 'unset',
         }}>
             {!background && <View className={styles.topBg}><View className={styles.bg}></View></View>}
-            <View className={styles.body} style={{ color: color ?? "var(--app-text-color-primary)", justifyContent: titleCenter ? 'center' : 'unset', margin: `0 ${paddingX}px` }}>
+            <View className={styles.body}
+                style={{
+                    color: color ?? "var(--app-text-color-primary)",
+                    justifyContent: titleCenter ? 'center' : 'unset',
+                    margin: `0 ${paddingX}px`,
+                    fontSize: fontSize ?? "var(--nutui-font-text)"
+                }}>
                 {back && <ArrowLeft className={styles.back} onClick={() => Taro.navigateBack()} />}
                 {title}
             </View>

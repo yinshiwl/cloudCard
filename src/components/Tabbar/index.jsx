@@ -4,7 +4,6 @@ import Taro from '@tarojs/taro'
 import { useCallback, useMemo } from 'react';
 
 export default ({ value }) => {
-    // test
     const iconSize = useMemo(() => {
         return 20;
     }, [])
@@ -13,7 +12,7 @@ export default ({ value }) => {
             case 0:
                 return '/pages/index/index'
             case 1:
-                return '/pages/collect/index'
+                return '/pages/channel/index'
             case 2:
                 return '/pages/user/index'
         }
@@ -27,7 +26,7 @@ export default ({ value }) => {
             })
         }}>
             <Tabbar.Item title="首页" icon={<Home size={iconSize} />} />
-            <Tabbar.Item title="收藏" icon={<Star size={iconSize} />} />
+            <Tabbar.Item title="渠道中心" icon={<Star size={iconSize} />} />
             <Tabbar.Item title="我的" icon={<User size={iconSize} />} />
         </Tabbar>
     );

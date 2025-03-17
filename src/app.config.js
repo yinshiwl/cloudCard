@@ -8,6 +8,7 @@ export default defineAppConfig({
     'pages/viewCard/index',
     'pages/notify/index',
     'pages/categoryAll/index',
+    'pages/channel/index',
   ],
   permission: {
     "scope.userLocation": {
@@ -27,8 +28,11 @@ export default defineAppConfig({
         pagePath: 'pages/index/index'
       },
       {
-        pagePath: 'pages/collect/index'
+        pagePath: 'pages/channel/index'
       },
+      // {
+      //   pagePath: 'pages/collect/index'
+      // },
       {
         pagePath: 'pages/user/index'
       }
