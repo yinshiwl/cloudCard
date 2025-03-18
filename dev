@@ -90,12 +90,10 @@ echo "谁最帅:"
 while true; do
     read name
 
-    if [ "$name" == "张志建" ]; then
+    if [ "$name" == "徐育娟" ]; then
         echo "真帅"
         yarn dev:weapp
         break
-    elif [ "$name" == "徐育娟" ]; then
-        echo "真自恋,再想想"
     else 
         echo "不对不对,再想想"
     fi
