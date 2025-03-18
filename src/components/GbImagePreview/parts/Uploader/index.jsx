@@ -1,4 +1,4 @@
-Uploader({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) {
+const Uploader = ({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) =>{
     const showUpload = useMemo(() => {
         if (!uploadLength) return false
         return imageList.length < uploadLength
@@ -40,3 +40,5 @@ Uploader({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageLi
         </View>
     );
 }
+
+export default Uploader;
