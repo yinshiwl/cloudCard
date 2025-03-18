@@ -2,8 +2,8 @@ import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import { useMemo } from "react"
 import styles from "./index.module.scss"
-import config from "../../../../../config"
 import utils from "../../../../common/utils"
+import { config } from "../../../../common/config"
 
 const Uploader = ({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) => {
     const showUpload = useMemo(() => {
