@@ -8,7 +8,8 @@
     "import/first": "off",
     "jsx-quotes": "off",
     "react/jsx-no-undef": "error",
-    "react/jsx-closing-bracket-location": "off"
+    "react/jsx-closing-bracket-location": "off",
+    "no-unused-vars": "error"
   },
   "globals": {
     "YS_API_URL": "readonly"
