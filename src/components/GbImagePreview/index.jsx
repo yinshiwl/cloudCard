@@ -2,10 +2,9 @@ import { Image, ImagePreview } from "@nutui/nutui-react-taro";
 import { View } from "@tarojs/components"
 import { useMemo, useState } from "react";
 import styles from "./index.module.scss";
-import Taro from "@tarojs/taro";
 import utils from "../../common/utils";
-import { config } from "../../common/config";
 import GbIcons from "../GbIcons";
+import Uploader from "./parts/Uploader";
 
 export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, uploadIcon, uploadLabel }) => {
     const [init, setInit] = useState(0)
