@@ -22,6 +22,7 @@ echo "        \:::\____\       \::::/    /              \:::\____\              
 echo "         \::/    /        \::/____/                \::/    /                \:|   | ";
 echo "          \/____/          ~~                       \/____/                  \|___| ";
 
+echo " "
 
 echo "编程如禅,调试如炼";
 echo "Bug生生不息,我心岿然不动"
@@ -33,7 +34,10 @@ echo "白天写代码,晚上修Bug"
 echo "上线如登仙,宕机似入地狱"
 echo "愿此生不写Bug,不踩坑,不背锅"
 echo "愿服务器长青,需求稳定如初"
+echo " "
 echo "            —— 愿程序员秃有所值,Bug退散! 🚀😆"
+
+echo " "
 
 # 删除/dist目录
 rm -rf dist
@@ -46,7 +50,7 @@ fi
 
 
 # ESLint检查src目录
-yarn eslint src --ext .js,.jsx,.ts,.tsx
+npx eslint src --ext .js,.jsx,.ts,.tsx
 if [ $? -eq 0 ]; then
     echo "代码通过ESLint检查"
 else
@@ -80,7 +84,7 @@ fi
 # echo "若终须秃,愿换来代码无错,永不加班！"
 # echo "            —— 愿程序员秃有所值，Bug 退散！ 🚀😆"
 
-
+echo " "
 # 打包本地微信小程序调试
 echo "谁最帅:"
 while true; do
@@ -91,7 +95,7 @@ while true; do
         yarn dev:weapp
         break
     elif [ "$name" == "徐育娟" ]; then
-        echo "真自恋"
+        echo "真自恋,再想想"
     else 
         echo "不对不对,再想想"
     fi
