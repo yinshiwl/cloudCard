@@ -5,6 +5,7 @@ import prodConfig from './prod'
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
+  console.log(command, mode)
   const baseConfig = {
     defineConstants: {
       //腾讯位置服务key

@@ -1,4 +1,4 @@
-import { Text, View } from '@tarojs/components';
+import { Text } from '@tarojs/components';
 import Page from '../../components/Page';
 import Tabbar from '../../components/Tabbar';
 import Body from '../../components/Body';

@@ -12,7 +12,7 @@ import useCardPage from "../../common/hooks/useCardPage";
 export default () => {
     const type = useMemo(() => {
         return 'COLLECT'
-    })
+    }, [])
     const { cardPage, getCardPage } = useCardPage({ type });
     return (
         <Page className={styles.root}>

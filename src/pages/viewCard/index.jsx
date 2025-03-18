@@ -1,4 +1,3 @@
-import styles from "./index.module.scss";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import DefaultCard from "../../components/CardTheme/DefaultTheme";

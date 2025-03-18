@@ -6,6 +6,7 @@ import GameCard from "../GameCard";
 const VirtualList = () => {
     const [list, setList] = useState([]);
     const [scrollTop, setScrollTop] = useState(0);
+    console.log(scrollTop)
     useEffect(() => {
         const dataList = [];
         for (let i = 0; i < 100; i++) {

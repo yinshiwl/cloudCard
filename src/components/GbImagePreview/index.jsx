@@ -7,7 +7,7 @@ import utils from "../../common/utils";
 import { config } from "../../common/config";
 import GbIcons from "../GbIcons";
 
-export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, uploadIcon, uploadLabel, ...restProps }) => {
+export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, uploadIcon, uploadLabel }) => {
     const [init, setInit] = useState(0)
     const [showPreview, setShowPreview] = useState(false)
 
@@ -48,8 +48,8 @@ export default ({ columns = 5, imageList = [], setImageList, uploadLength = 0, u
                 visible={showPreview}
                 defaultValue={init}
                 onClose={() => setShowPreview(false)}
-                indicator={true}
-                closeOnContentClick={true}
+                indicator
+                closeOnContentClick
             />
         </View>
     );

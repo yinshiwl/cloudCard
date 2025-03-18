@@ -1,7 +1,6 @@
 import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
 import { DoubleArrowUp } from '@nutui/icons-react-taro'
-import Taro from "@tarojs/taro";
 
 const BackTop = ({ setBackTop }) => {
     return (

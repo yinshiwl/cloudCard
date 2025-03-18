@@ -1,5 +1,4 @@
 import { Avatar } from "@nutui/nutui-react-taro";
-import GbIcons from "../../components/GbIcons";
 
 export default ({ ...restProps }) => {
     return (

@@ -5,7 +5,7 @@ import Body from "../../components/Body";
 import { useEffect, useMemo, useState } from "react";
 import Taro, { useRouter } from "@tarojs/taro";
 import utils from "../../common/utils";
-import { Dialog, Form, Input, TextArea, Uploader } from "@nutui/nutui-react-taro";
+import { Dialog, Form, Input, TextArea } from "@nutui/nutui-react-taro";
 import GbButton from "../../components/GbButton";
 import GbIcons from "../../components/GbIcons";
 import Page from "../../components/Page";
@@ -43,9 +43,10 @@ export default () => {
     useEffect(() => {
         if (!name) return
         form.setFieldsValue({ name })
-    }, [name])
+    }, [form, name])
 
     const submitFailed = (error) => {
+        console.error(error)
         Taro.showToast({ title: '保存失败', icon: 'error' })
     }
 

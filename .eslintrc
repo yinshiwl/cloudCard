@@ -9,7 +9,8 @@
     "jsx-quotes": "off",
     "react/jsx-no-undef": "error",
     "react/jsx-closing-bracket-location": "off",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "react/jsx-indent-props": "off"
   },
   "globals": {
     "YS_API_URL": "readonly"

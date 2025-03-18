@@ -1,4 +1,3 @@
-import styles from "./index.module.scss";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import DefaultCard from "../../components/CardTheme/DefaultTheme";
@@ -53,7 +52,7 @@ function BbFixedNav({ cardInfo }) {
     const onChange = (value) => {
         setVisible(value)
     }
-    const onSelect = (item, event) => {
+    const onSelect = () => {
         Taro.navigateTo({ url: '/pages/editCardInfo/index?id=' + id })
     }
     return (

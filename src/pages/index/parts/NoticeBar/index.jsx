@@ -1,4 +1,4 @@
-import { Ellipsis, NoticeBar as NutuiNoticeBar } from '@nutui/nutui-react-taro'
+import { NoticeBar as NutuiNoticeBar } from '@nutui/nutui-react-taro'
 import { ArrowSize6 } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components';
 import styles from "./index.module.scss";
