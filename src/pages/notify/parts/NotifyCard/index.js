@@ -16,7 +16,7 @@ const NotifyCard = ({ title, time }) => {
             <Divider />
             <View className={styles.button}>
                 <View>立即查看</View>
-                <ArrowSize6 size={"var(--nutui-font-text-small)"} />
+                <ArrowSize6 size="var(--nutui-font-text-small)" />
             </View>
         </View>
     );

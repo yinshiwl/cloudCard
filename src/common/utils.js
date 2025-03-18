@@ -120,8 +120,8 @@ class Utils {
                 token: this.getToken(),
             },
         }).then(res => {
-            const resp = JSON.parse(res.data)
-            return resp?.model?.fileId;
+            const r = JSON.parse(res.data)
+            return r?.model?.fileId;
         }).catch(err => {
             console.error('Upload failed:', err);
             throw err;

@@ -1,4 +1,4 @@
-export default defineAppConfig({
+export default ({
   pages: [
     'pages/index/index',
     'pages/collect/index',
