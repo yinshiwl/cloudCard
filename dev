@@ -38,7 +38,7 @@ fi
 
 # ESLint检查src目录
 echo "正在ESLint检查src目录"
-yarn eslint src
+yarn eslint src --ext .js,.jsx,.ts,.tsx
 if [ $? -eq 0 ]; then
     echo "代码通过ESLint检查"
 else
