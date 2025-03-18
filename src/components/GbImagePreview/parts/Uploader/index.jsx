@@ -1,4 +1,11 @@
-const Uploader = ({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) =>{
+import { View } from "@tarojs/components"
+import Taro from "@tarojs/taro"
+import { useMemo } from "react"
+import styles from "./index.module.scss"
+import config from "../../../../../config"
+import utils from "../../../../common/utils"
+
+const Uploader = ({ uploadLength = 0, uploadIcon, uploadLabel, imageList = [], setImageList }) => {
     const showUpload = useMemo(() => {
         if (!uploadLength) return false
         return imageList.length < uploadLength
