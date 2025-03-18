@@ -1,0 +1,93 @@
+.cardItem {
+    width: 100%;
+    height: auto;
+    background-color: var(--app-card-background);
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    overflow: hidden;
+
+    .content {
+        padding: 20rpx;
+        display: flex;
+        gap: 20rpx;
+
+        .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20rpx;
+
+            .top {
+                display: flex;
+                align-items: center;
+                gap: 20rpx;
+
+                .name {
+                    color: var(--app-primary-color);
+                    font-weight: bolder;
+                    font-size: var(--nutui-font-text-large);
+                }
+
+                .position {
+                    color: var(--app-text-color);
+                    opacity: 0.7;
+                    font-size: var(--nutui-font-text-small);
+                }
+            }
+
+            .bottom {
+                display: flex;
+                align-items: center;
+
+                .company {
+                    color: var(--app-text-color);
+                    font-size: var(--nutui-font-text);
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .operate {
+        width: 100%;
+        height: 80rpx;
+        border-top: 1px solid var(--nutui-color-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        color: var(--app-text-color);
+
+        .operateItem {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10rpx;
+            font-size: var(--nutui-font-text-small);
+            border-right: 1px solid var(--nutui-color-border);
+
+            .icon {
+                width: var(--nutui-font-text-small);
+                height: var(--nutui-font-text-small);
+            }
+
+            &:last-child {
+                border-right: none;
+            }
+
+            &.delete {
+                color: var(--app-danger-color);
+            }
+
+            &:active {
+                opacity: 0.5;
+            }
+        }
+    }
+}
