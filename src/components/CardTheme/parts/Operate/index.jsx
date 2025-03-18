@@ -2,8 +2,8 @@ import { Text, View } from "@tarojs/components";
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import classNames from "classnames";
-import GbIcons from "../../../../GbIcons";
-import utils from "../../../../../common/utils";
+import GbIcons from "../../../GbIcons";
+import utils from "../../../../common/utils";
 import { Loading } from "@nutui/nutui-react-taro";
 
 const Operate = ({ cardInfo }) => {

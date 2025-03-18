@@ -5,7 +5,7 @@ import GbAvatar from "../../GbAvatar";
 import GbImagePreview from "../../GbImagePreview";
 import Taro from "@tarojs/taro";
 import utils from "../../../common/utils";
-import Operate from "./parts/Operate";
+import Operate from "../parts/Operate";
 
 export default ({ cardInfo }) => {
     const { name, position, company, description, phone, weChat, address, email, avatar, album } = cardInfo || {}
