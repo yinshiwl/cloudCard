@@ -39,6 +39,17 @@ export default defineConfig(async (merge, { command, mode }) => {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
     mini: {
+      webpackChain(chain) {
+        // 添加 ESLint 插件
+        const ESLintPlugin = require('eslint-webpack-plugin');
+
+        chain.plugin('eslint-webpack-plugin').use(ESLintPlugin, [{
+          extensions: ['js', 'jsx', 'ts', 'tsx'], // 支持的文件类型
+          emitWarning: true, // 控制台显示警告
+          emitError: true, // 控制台显示错误
+          lintDirtyModulesOnly: true, // 仅检查修改过的文件
+        }]);
+      },
       miniCssExtractPluginOption: {
         ignoreOrder: true,
       },
