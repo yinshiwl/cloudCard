@@ -40,15 +40,16 @@ echo "            —— 愿程序员秃有所值,Bug退散! 🚀😆"
 echo " "
 
 # 删除/dist目录
-rm -rf dist
-if [ $? -eq 0 ]; then
-    echo "删除dist目录成功"
-else
-    echo "删除dist目录失败"
-    exit 1
-fi
+# rm -rf dist
+# if [ $? -eq 0 ]; then
+#     echo "删除dist目录成功"
+# else
+#     echo "删除dist目录失败"
+#     exit 1
+# fi
 
 
+echo "检查代码中..."
 # ESLint检查src目录
 npx eslint src --ext .js,.jsx,.ts,.tsx
 if [ $? -eq 0 ]; then
