@@ -1,4 +1,5 @@
 # cloudCard
+
 游乐玩指是一款现代化的名片管理小程序，旨在帮助您在数字化时代轻松连接和管理人脉。通过云端技术，您可以随时随地创建、分享和保存名片，再也不用担心遗失或忘记携带名片。无论是商业会议、社交活动，还是日常交流，游乐玩指都能让您轻松交换信息，并高效管理您的联系人网络。
 
 ## 技术栈
@@ -14,7 +15,7 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/your_username/cloudCard.git
+git clone https://github.com/yinshiwl/cloudCard.git
 cd cloudCard
 ```
 
@@ -28,13 +29,11 @@ npm install
 yarn install
 ```
 
-### 3. 配置环境变量
+### 3. 安装 vscode 扩展
 
-根据项目需求，在项目根目录下创建 `.env` 文件，并配置相关的环境变量。例如：
-
-```env
-TARO_APP_API_URL=http://localhost:8000
-```
+Eslint
+Prettier - Code formatter
+Codeium
 
 ### 4. 运行项目
 
@@ -45,6 +44,8 @@ TARO_APP_API_URL=http://localhost:8000
 npm run dev:weapp
 # or
 yarn dev:weapp
+# or
+./dev
 ```
 
 开发服务器将自动启动，并在 Taro 开发者工具中打开。你可以通过开发者工具预览和调试小程序。
