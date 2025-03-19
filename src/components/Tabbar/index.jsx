@@ -14,7 +14,7 @@ export default ({ value }) => {
             case 1:
                 return '/pages/channel/index'
             case 2:
-                return '/pages/user/index'
+                return '/pages/promotion/index'
         }
     }, [])
     if (value === undefined || value === null) return null;
@@ -27,7 +27,7 @@ export default ({ value }) => {
         }}>
             <Tabbar.Item title="首页" icon={<Home size={iconSize} />} />
             <Tabbar.Item title="渠道中心" icon={<Star size={iconSize} />} />
-            <Tabbar.Item title="我的" icon={<User size={iconSize} />} />
+            <Tabbar.Item title="推广数据" icon={<User size={iconSize} />} />
         </Tabbar>
     );
 }

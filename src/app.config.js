@@ -9,6 +9,7 @@ export default ({
     'pages/notify/index',
     'pages/categoryAll/index',
     'pages/channel/index',
+    'pages/promotion/index',
   ],
   permission: {
     "scope.userLocation": {
@@ -29,6 +30,9 @@ export default ({
       },
       {
         pagePath: 'pages/channel/index'
+      },
+      {
+        pagePath: 'pages/promotion/index'
       },
       // {
       //   pagePath: 'pages/collect/index'

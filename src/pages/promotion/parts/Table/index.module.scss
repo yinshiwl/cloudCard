@@ -1,0 +1,37 @@
+.root {
+    padding: 40rpx 20rpx;
+
+    .total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20rpx 40rpx;
+        background: #2e86de80;
+        color: #fff;
+        font-size: var(--nutui-font-text);
+        font-weight: bolder;
+        border-radius: 10rpx;
+        overflow: hidden;
+        margin-bottom: 10rpx;
+    }
+
+    :global {
+        .nut-table-main-head {
+            background: #2e86de70;
+            color: #fff;
+        }
+
+        .nut-table-main-body {
+            color: #333;
+        }
+
+        .nut-table-wrapper {
+            border: none;
+        }
+
+        .nut-table-main {
+            border-radius: 10rpx;
+            overflow: hidden;
+        }
+    }
+}
