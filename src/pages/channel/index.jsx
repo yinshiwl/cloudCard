@@ -1,4 +1,4 @@
-import { Text, View } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import Page from "../../components/Page";
 import Tabbar from "../../components/Tabbar";
 import Body from "../../components/Body";
@@ -14,9 +14,9 @@ const Channel = () => {
 			<Body hasTabbar>
 				<View className={styles.content}>
 					<InfoCard />
-					<Text className={styles.tips}>
+					<View className={styles.tips}>
 						注：合作商可获得子渠道收益10%【官方奖励，不影响下级收益】
-					</Text>
+					</View>
 					<TotalData />
 				</View>
 			</Body>
