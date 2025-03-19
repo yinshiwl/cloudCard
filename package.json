@@ -82,5 +82,9 @@
 		"stylelint": "^14.4.0",
 		"ts-node": "^10.9.1",
 		"webpack": "5.78.0"
+	},
+	"prettier": {
+		"useTabs": true,
+		"tabWidth": 2
 	}
 }
