@@ -1,7 +1,13 @@
-.root{
-    .tips{
-        color: #00000080;
-        font-size: var(--nutui-font-text-small);
-        padding: 0 40rpx;
+.root {
+    .content {
+        margin: 20rpx;
+        padding: 20rpx;
+        background: #fff;
+        border-radius: 20rpx;
+
+        .tips {
+            color: #00000080;
+            font-size: var(--nutui-font-text-small);
+        }
     }
 }
