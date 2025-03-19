@@ -2,6 +2,7 @@ import { Table as NutuiTable } from "@nutui/nutui-react-taro";
 import { Text, View } from "@tarojs/components";
 import { useState } from "react";
 import styles from "./index.module.scss";
+import { Upload } from "@nutui/icons-react-taro";
 
 const Table = () => {
 	const [columns] = useState([
@@ -50,11 +51,18 @@ const Table = () => {
 
 	return (
 		<View className={styles.root}>
-      <View className={styles.total}>
-        <Text>合计：</Text>
-        <Text>活跃：3</Text>
-        <Text>收益：￥888.88</Text>
-      </View>
+			<View className={styles.title}>
+				<View className={styles.left}>
+					<Upload className={styles.icon} />
+					<Text className={styles.text}>每日数据</Text>
+				</View>
+				<Text className={styles.right}>注释：每日18:00前更新昨日推广数据</Text>
+			</View>
+			<View className={styles.total}>
+				<Text>合计：</Text>
+				<Text>活跃：3</Text>
+				<Text>收益：￥888.88</Text>
+			</View>
 			<NutuiTable columns={columns} data={data} />
 		</View>
 	);

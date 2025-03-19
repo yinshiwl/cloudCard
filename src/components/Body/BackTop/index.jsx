@@ -1,6 +1,6 @@
 import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
-import { DoubleArrowUp } from "@nutui/icons-react-taro";
+import { Top } from "@nutui/icons-react-taro";
 
 const BackTop = ({ setBackTop, showBackTop }) => {
 	return (
@@ -14,7 +14,7 @@ const BackTop = ({ setBackTop, showBackTop }) => {
 				setBackTop(true);
 			}}
 		>
-			<DoubleArrowUp className="nut-icon-am-jump nut-icon-am-infinite" />
+			<Top />
 		</View>
 	);
 };

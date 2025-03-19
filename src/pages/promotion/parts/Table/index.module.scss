@@ -1,12 +1,44 @@
 .root {
-    padding: 40rpx 20rpx;
+    margin: 10rpx 20rpx;
+    padding: 40rpx 30rpx;
+    background: #fff;
+    border-radius: 20rpx;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20rpx;
+
+        .left {
+            display: flex;
+            gap: 10rpx;
+            align-items: center;
+
+            .icon {
+                color: #e67e22;
+                font-size: var(--nutui-font-text-large);
+            }
+
+            .text {
+                color: 000;
+                font-size: var(--nutui-font-text-large);
+                font-weight: bolder;
+            }
+        }
+
+        .right {
+            color: #333;
+            font-size: var(--nutui-font-text-small);
+        }
+    }
 
     .total {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 20rpx 40rpx;
-        background: #2e86de80;
+        background: #4794e1;
         color: #fff;
         font-size: var(--nutui-font-text);
         font-weight: bolder;
@@ -17,7 +49,7 @@
 
     :global {
         .nut-table-main-head {
-            background: #2e86de70;
+            background: #97c3ee;
             color: #fff;
         }
 
