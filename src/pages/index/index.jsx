@@ -5,8 +5,8 @@ import Page from "../../components/Page";
 import Swiper from "./parts/Swiper";
 import Category from "./parts/Category";
 import NoticeBar from "./parts/NoticeBar";
-import VirtualList from "./parts/VirtualList";
 import Card from "../../components/Card";
+import GameList from "../../components/GameList";
 
 const Index = () => {
 	return (
@@ -18,7 +18,7 @@ const Index = () => {
 					<Category />
 					<NoticeBar />
 				</Card>
-				<VirtualList />
+				<GameList />
 			</Body>
 			<Tabbar value={0} />
 		</Page>

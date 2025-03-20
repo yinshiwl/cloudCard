@@ -1,9 +1,9 @@
 import { View } from "@tarojs/components";
 import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
-import GameCard from "../GameCard";
+import GameCard from "./parts/GameCard";
 
-const VirtualList = () => {
+const GameList = () => {
     const [list, setList] = useState([]);
     const [scrollTop, setScrollTop] = useState(0);
     console.log(scrollTop)
@@ -34,4 +34,4 @@ const VirtualList = () => {
 };
 
 
-export default VirtualList
+export default GameList
