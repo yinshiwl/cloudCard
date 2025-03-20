@@ -29,7 +29,7 @@ export default ({
 					justifyContent: titleCenter ? "center" : "unset",
 					margin: `0 ${paddingX}px`,
 					fontSize: fontSize ?? "38rpx",
-                    fontWeight: "400"
+					fontWeight: "bold",
 				}}
 			>
 				{back && (
