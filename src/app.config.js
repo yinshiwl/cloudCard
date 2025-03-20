@@ -11,6 +11,7 @@ export default ({
     'pages/channel/index',
     'pages/promotion/index',
     'pages/gameFilter/index',
+    'pages/gameDetail/index',
   ],
   permission: {
     "scope.userLocation": {
