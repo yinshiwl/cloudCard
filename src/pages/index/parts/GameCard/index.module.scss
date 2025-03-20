@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
   gap: 20rpx;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
 
   .img {
     border-radius: 10rpx;
@@ -10,8 +13,10 @@
 
   .content {
     flex: 1;
+    height: 128rpx;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 3rpx;
 
     .title {
@@ -23,8 +28,7 @@
       font-size: var(--nutui-font-text-small);
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      /* 限制最多显示 2 行 */
+      -webkit-line-clamp: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       word-break: break-word;
@@ -33,10 +37,15 @@
     .other {
       font-size: var(--nutui-font-text-small);
       color: green;
-    }
-  }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  .button {
-    width: auto;
+      .button {
+        width: auto;
+        height: 45rpx;
+        border-radius: 10rpx;
+      }
+    }
   }
 }

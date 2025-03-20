@@ -6,6 +6,7 @@ import Swiper from "./parts/Swiper";
 import Category from "./parts/Category";
 import NoticeBar from "./parts/NoticeBar";
 import VirtualList from "./parts/VirtualList";
+import Card from "../../components/Card";
 
 const Index = () => {
 	return (
@@ -13,8 +14,10 @@ const Index = () => {
 			<Navbar title="游乐玩指" />
 			<Body hasTabbar>
 				<Swiper />
-				<Category />
-				<NoticeBar />
+				<Card>
+					<Category />
+					<NoticeBar />
+				</Card>
 				<VirtualList />
 			</Body>
 			<Tabbar value={0} />
