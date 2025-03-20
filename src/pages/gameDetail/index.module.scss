@@ -1,0 +1,19 @@
+.gameHead {
+    display: flex;
+    gap: 40rpx;
+
+    .gameIcon {
+        border-radius: 20rpx;
+        overflow: hidden;
+    }
+
+    .gameInfo {
+        display: flex;
+        flex-direction: column;
+
+        .gameName {
+            font-size: 38rpx;
+            font-weight: bolder;
+        }
+    }
+}
