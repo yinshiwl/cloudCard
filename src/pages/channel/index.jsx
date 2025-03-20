@@ -15,7 +15,7 @@ const Channel = () => {
 				<View className={styles.content}>
 					<InfoCard />
 					<View className={styles.tips}>
-						注：合作商可获得子渠道收益10%【官方奖励，不影响下级收益】
+						注：合作商可获得子渠道收益10%【不影响下级收益】
 					</View>
 					<TotalData />
 				</View>

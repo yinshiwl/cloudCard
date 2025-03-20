@@ -1,9 +1,11 @@
 .root {
     .content {
-        margin: 20rpx;
         padding: 20rpx;
         background: #fff;
         border-radius: 20rpx;
+        display: flex;
+        flex-direction: column;
+        gap: 20rpx;
 
         .tips {
             color: #00000080;

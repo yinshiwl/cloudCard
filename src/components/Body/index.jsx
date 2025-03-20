@@ -1,4 +1,4 @@
-import { ScrollView } from "@tarojs/components";
+import { ScrollView, View } from "@tarojs/components";
 import utils from "../../common/utils";
 import styles from "./index.module.scss";
 import { SafeArea } from "@nutui/nutui-react-taro";
@@ -23,7 +23,7 @@ export default ({ children, hasTabbar }) => {
 			}}
 			style={{ top: `${navBarHeight}px`, bottom: hasTabbar ? "52px" : "0" }}
 		>
-			{children}
+			<View className={styles.content}>{children}</View>
 			<BackTop setBackTop={setBackTop} showBackTop={showBackTop} />
 			<SafeArea position="bottom" />
 		</ScrollView>
