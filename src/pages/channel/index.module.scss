@@ -1,16 +1,7 @@
 .root {
-    .content {
-        padding: 20rpx;
-        background: #fff;
-        border-radius: 20rpx;
-        display: flex;
-        flex-direction: column;
-        gap: 20rpx;
-
-        .tips {
-            color: #00000080;
-            font-size: var(--nutui-font-text-small);
-            text-align: center;
-        }
+    .tips {
+        color: #00000080;
+        font-size: var(--nutui-font-text-small);
+        text-align: center;
     }
 }

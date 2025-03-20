@@ -4,8 +4,9 @@ import styles from "./index.module.scss";
 import { SafeArea } from "@nutui/nutui-react-taro";
 import { useState } from "react";
 import BackTop from "./BackTop";
+import classNames from "classnames";
 
-export default ({ children, hasTabbar }) => {
+export default ({ children, hasTabbar, full }) => {
 	const { navBarHeight } = utils.getNavBarData();
 	const [backTop, setBackTop] = useState(false);
 	const [showBackTop, setShowBackTop] = useState(false);
@@ -23,7 +24,9 @@ export default ({ children, hasTabbar }) => {
 			}}
 			style={{ top: `${navBarHeight}px`, bottom: hasTabbar ? "52px" : "0" }}
 		>
-			<View className={styles.content}>{children}</View>
+			<View className={classNames(styles.content, { [styles.full]: full })}>
+				{children}
+			</View>
 			<BackTop setBackTop={setBackTop} showBackTop={showBackTop} />
 			<SafeArea position="bottom" />
 		</ScrollView>

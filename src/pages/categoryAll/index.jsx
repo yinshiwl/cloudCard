@@ -11,7 +11,7 @@ export default () => {
 	return (
 		<Page className={styles.root}>
 			<Navbar title="全部分类" back></Navbar>
-			<Body hasTabbar>
+			<Body full>
 				<SearchBar shape="round" maxLength={5} />
 				<Tabs
 					value={tab4value}
@@ -19,6 +19,7 @@ export default () => {
 						setTab4value(value);
 					}}
 					direction="vertical"
+                    autoHeight
 				>
 					{list4.map((item) => (
 						<Tabs.TabPane key={item} title={`Tab ${item}`}>
