@@ -10,7 +10,7 @@ import TotalData from "./parts/TotalData";
 const Channel = () => {
 	return (
 		<Page className={styles.root}>
-			<Navbar title="渠道中心" titleCenter fontSize="40rpx"></Navbar>
+			<Navbar title="渠道中心"></Navbar>
 			<Body hasTabbar>
 				<View className={styles.content}>
 					<InfoCard />
