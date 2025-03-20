@@ -4,7 +4,6 @@ import Page from "../../components/Page";
 import Navbar from "../../components/Navbar";
 import Body from "../../components/Body";
 import GameList from "../../components/GameList";
-import Card from "../../components/Card";
 import styles from "./index.module.scss";
 import { View } from "@tarojs/components";
 
@@ -48,9 +47,9 @@ export default () => {
 						</Menu.Item>
 					</Menu>
 				</View>
-				<Card>
+				<View className={styles.gameList}>
 					<GameList />
-				</Card>
+				</View>
 			</Body>
 		</Page>
 	);
