@@ -27,7 +27,7 @@ export default ({ children, hasTabbar, full }) => {
 			<View className={classNames(styles.content, { [styles.full]: full })}>
 				{children}
 			</View>
-			<BackTop setBackTop={setBackTop} showBackTop={showBackTop} />
+			<BackTop setBackTop={setBackTop} showBackTop={showBackTop && !backTop} />
 			<SafeArea position="bottom" />
 		</ScrollView>
 	);
