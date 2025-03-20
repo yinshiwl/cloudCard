@@ -3,6 +3,7 @@
     gap: 40rpx;
 
     .gameIcon {
+        min-width: 240rpx;
         border-radius: 20rpx;
         overflow: hidden;
     }
@@ -10,10 +11,40 @@
     .gameInfo {
         display: flex;
         flex-direction: column;
+        gap: 20rpx;
 
         .gameName {
             font-size: 38rpx;
             font-weight: bolder;
         }
+
+        .gameDesc {
+            font-size: var(--nutui-font-text);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+    }
+
+    .gameTags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20rpx;
+    }
+}
+
+.imageList {
+    width: auto;
+    display: flex;
+    overflow-x: scroll;
+    gap: 20rpx;
+
+    .image {
+        min-width: 300rpx;
+        border-radius: 20rpx;
+        overflow: hidden;
     }
 }
