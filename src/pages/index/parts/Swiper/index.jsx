@@ -1,4 +1,4 @@
-import { Swiper as NutuiSwiper, Skeleton } from "@nutui/nutui-react-taro";
+import { Swiper as NutuiSwiper } from "@nutui/nutui-react-taro";
 import styles from "./index.module.scss";
 import { View } from "@tarojs/components";
 import classNames from "classnames";
@@ -13,7 +13,6 @@ const Swiper = ({ className }) => {
 	const onChange = (e) => {
 		console.log(`onChange is trigger ${e}`);
 	};
-	return <Skeleton title animated avatar rows={3} visible></Skeleton>
 	return (
 		<View className={classNames(styles.swiper, className)}>
 			<NutuiSwiper
