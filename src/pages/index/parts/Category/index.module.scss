@@ -1,8 +1,14 @@
 .root {
 
     .category {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        display: flex;
+        overflow-x: auto;
+        gap: 20rpx;
+
+        // 隐藏滚动条
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .item {
             display: flex;
@@ -11,7 +17,35 @@
             align-items: center;
             gap: 10rpx;
 
+            &.active {
+                .iconBg {
+                    background: var(--app-primary-color);
+                }
+
+                .name {
+                    color: var(--app-primary-color);
+                }
+            }
+
+            .iconBg {
+                transition: all .3s ease-in-out;
+                border-radius: 10rpx;
+                width: 100rpx;
+                height: 100rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .icon {
+                    width: 80rpx;
+                    height: 80rpx;
+                    border-radius: 999px;
+                    overflow: hidden;
+                }
+            }
+
             .name {
+                transition: all .3s ease-in-out;
                 font-size: 30rpx;
                 font-weight: bolder;
             }
