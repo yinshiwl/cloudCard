@@ -13,6 +13,7 @@ export default ({
     'pages/gameFilter/index',
     'pages/gameDetail/index',
     'pages/income/index',
+    'pages/myLink/index',
   ],
   permission: {
     "scope.userLocation": {
@@ -36,6 +37,9 @@ export default ({
       },
       {
         pagePath: 'pages/promotion/index'
+      },
+      {
+        pagePath: 'pages/myLink/index'
       },
       {
         pagePath: 'pages/income/index'

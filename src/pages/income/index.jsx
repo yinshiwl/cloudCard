@@ -57,7 +57,7 @@ export default () => {
 					</View>
 				</Card>
 			</Body>
-			<Tabbar value={3} />
+			<Tabbar value={4} />
 		</Page>
 	)
 }

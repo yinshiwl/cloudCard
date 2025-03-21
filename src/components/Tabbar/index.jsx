@@ -16,6 +16,8 @@ export default ({ value }) => {
 			case 2:
 				return "/pages/promotion/index";
 			case 3:
+				return "/pages/myLink/index";
+			case 4:
 				return "/pages/income/index";
 		}
 	}, []);
@@ -35,6 +37,7 @@ export default ({ value }) => {
 			<Tabbar.Item title="首页" icon={<Home size={iconSize} />} />
 			<Tabbar.Item title="渠道中心" icon={<Star size={iconSize} />} />
 			<Tabbar.Item title="推广数据" icon={<User size={iconSize} />} />
+			<Tabbar.Item title="我的链接" icon={<User size={iconSize} />} />
 			<Tabbar.Item title="我的收益" icon={<User size={iconSize} />} />
 		</Tabbar>
 	);
