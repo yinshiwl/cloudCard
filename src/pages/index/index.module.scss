@@ -1,0 +1,45 @@
+.root {
+    &.top {
+
+        .card,
+        .search {
+            background: #fff;
+
+            :global(.nut-searchbar) {
+                background: #fff;
+            }
+        }
+
+        .card {
+            box-shadow: 0 3rpx 10rpx 0 #00000020;
+        }
+    }
+
+    .search {
+        position: sticky;
+        top: 0;
+        z-index: 101;
+
+        :global(.nut-searchbar) {
+            transition: all 0.5s ease-in-out;
+            background: var(--app-page-background);
+            padding: 20rpx;
+        }
+    }
+
+    .swiper {
+        padding: 0 20rpx 20rpx 20rpx;
+    }
+
+    .card {
+        transition: all 0.5s ease-in-out;
+        padding: 0 20rpx;
+        position: sticky;
+        z-index: 100;
+    }
+}
+
+
+.content {
+    padding: 20rpx;
+}

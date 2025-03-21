@@ -6,7 +6,7 @@ import { useState } from "react";
 import BackTop from "./BackTop";
 import classNames from "classnames";
 
-export default ({ children, hasTabbar, full }) => {
+export default ({ children, hasTabbar, full, onScroll }) => {
 	const { navBarHeight } = utils.getNavBarData();
 	const [backTop, setBackTop] = useState(false);
 	const [showBackTop, setShowBackTop] = useState(false);
@@ -21,6 +21,7 @@ export default ({ children, hasTabbar, full }) => {
 				const { scrollTop } = e.target;
 				setShowBackTop(scrollTop > 500);
 				setBackTop(false);
+				onScroll && onScroll(e);
 			}}
 			style={{ top: `${navBarHeight}px`, bottom: hasTabbar ? "52px" : "0" }}
 		>

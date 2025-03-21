@@ -1,8 +1,9 @@
 import { Swiper as NutuiSwiper } from "@nutui/nutui-react-taro";
 import styles from "./index.module.scss";
 import { View } from "@tarojs/components";
+import classNames from "classnames";
 
-const Swiper = () => {
+const Swiper = ({ className }) => {
 	const list = [
 		"https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg",
 		"https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg",
@@ -13,7 +14,7 @@ const Swiper = () => {
 		console.log(`onChange is trigger ${e}`);
 	};
 	return (
-		<View className={styles.swiper}>
+		<View className={classNames(styles.swiper, className)}>
 			<NutuiSwiper
 				defaultValue={1}
 				autoPlay
