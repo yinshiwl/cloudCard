@@ -1,5 +1,11 @@
 import { Tabbar } from "@nutui/nutui-react-taro";
-import { Star, Home, User } from "@nutui/icons-react-taro";
+import {
+	Wallet,
+    Layers,
+    Category,
+    Link,
+    Apps,
+} from "@nutui/icons-react-taro";
 import Taro from "@tarojs/taro";
 import { useCallback, useMemo } from "react";
 
@@ -34,11 +40,11 @@ export default ({ value }) => {
 				});
 			}}
 		>
-			<Tabbar.Item title="首页" icon={<Home size={iconSize} />} />
-			<Tabbar.Item title="渠道中心" icon={<Star size={iconSize} />} />
-			<Tabbar.Item title="推广数据" icon={<User size={iconSize} />} />
-			<Tabbar.Item title="我的链接" icon={<User size={iconSize} />} />
-			<Tabbar.Item title="我的收益" icon={<User size={iconSize} />} />
+			<Tabbar.Item title="热门游戏" icon={<Apps size={iconSize} />} />
+			<Tabbar.Item title="渠道中心" icon={<Layers size={iconSize} />} />
+			<Tabbar.Item title="推广数据" icon={<Category size={iconSize} />} />
+			<Tabbar.Item title="我的链接" icon={<Link size={iconSize} />} />
+			<Tabbar.Item title="我的收益" icon={<Wallet size={iconSize} />} />
 		</Tabbar>
 	);
 };
