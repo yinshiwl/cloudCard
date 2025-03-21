@@ -41,7 +41,6 @@ const Index = () => {
 		<Page className={classNames(styles.root, { [styles.top]: isTop })}>
 			<Navbar title="游乐玩指" />
 			<Body hasTabbar onScroll={onScroll} full>
-				<NoticeBar />
 				<View id="searchElement" className={styles.search}>
 					<SearchBar shape="round" maxLength={5} />
 				</View>
@@ -52,6 +51,7 @@ const Index = () => {
 					style={{ top: `${searchHeight}px` }}
 				>
 					<Card>
+						<NoticeBar />
 						<Category />
 					</Card>
 				</View>

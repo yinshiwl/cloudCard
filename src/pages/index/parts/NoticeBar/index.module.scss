@@ -1,10 +1,12 @@
 .root {
     :global(.nut-noticebar-vertical) {
         border-radius: 20rpx;
+        background: transparent;
+        padding: 0;
     }
 
     .text {
-        width: 520rpx;
+        width: 560rpx;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
