@@ -45,13 +45,15 @@ const Index = () => {
 					<SearchBar shape="round" maxLength={5} />
 				</View>
 				<Swiper className={styles.swiper} />
+				<Card className={styles.notice}>
+					<NoticeBar />
+				</Card>
 				<View
 					id="cardElement"
 					className={styles.card}
 					style={{ top: `${searchHeight}px` }}
 				>
 					<Card>
-						<NoticeBar />
 						<Category />
 					</Card>
 				</View>

@@ -13,10 +13,6 @@
         .card {
             box-shadow: 0 3rpx 10rpx 0 #00000020;
         }
-
-        :global(.nut-noticebar-vertical) {
-            display: none;
-        }
     }
 
     .search {
@@ -40,6 +36,10 @@
         padding: 0 20rpx;
         position: sticky;
         z-index: 100;
+    }
+
+    .notice{
+        margin: 0 20rpx 20rpx 20rpx;
     }
 }
 
