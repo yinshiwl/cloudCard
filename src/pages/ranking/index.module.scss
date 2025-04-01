@@ -1,12 +1,11 @@
 .root {
-    background-color: #f5f5f5;
     min-height: 100vh;
 }
 
 .header {
     background-color: #4b87ff;
     color: #fff;
-    padding: 40rpx 30rpx 120rpx;
+    padding: 120rpx 30rpx 120rpx;
     position: relative;
 }
 
@@ -23,7 +22,7 @@
 
 .contentBox {
     margin-top: -100rpx;
-    padding: 0 30rpx;
+    padding: 0 40rpx;
 }
 
 .tabWrapper {
@@ -35,8 +34,8 @@
 
 .tabsComponent {
     :global {
-        .nut-tabs__titles {
-            background-color: #fff;
+        .nut-tabs-titles {
+            background-color: #fff !important;
             font-size: 32rpx;
             height: 88rpx;
         }

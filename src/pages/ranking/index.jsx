@@ -26,8 +26,8 @@ export default () => {
 
     return (
         <Page>
-            <Navbar title="佣金排行" />
-            <Body>
+            <Navbar title="佣金排行" back background="#4b87ff" color="#fff" />
+            <Body full>
                 <View className={styles.root}>
                     <View className={styles.header}>
                         <View className={styles.title}>排行榜</View>
