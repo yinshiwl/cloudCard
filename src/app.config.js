@@ -14,6 +14,7 @@ export default ({
     'pages/gameDetail/index',
     'pages/income/index',
     'pages/myLink/index',
+    'pages/ranking/index',
   ],
   permission: {
     "scope.userLocation": {
