@@ -36,6 +36,8 @@
     :global {
         .nut-tabs-titles {
             background-color: #fff !important;
+            border-radius: 15rpx 15rpx 0 0 !important;
+            overflow: hidden !important;
             font-size: 32rpx;
             height: 88rpx;
         }
