@@ -7,6 +7,7 @@ import Body from "../../components/Body"
 import Page from "../../components/Page"
 import Card from "../../components/Card"
 import styles from "./index.module.scss"
+import Taro from '@tarojs/taro'
 
 export default () => {
 	const incomeData = {
@@ -16,13 +17,24 @@ export default () => {
 		totalWithdraw: 0
 	}
 
+	const goToRanking = () => {
+		Taro.navigateTo({
+			url: '/pages/ranking/index'
+		})
+	}
+
 	return (
 		<Page className={styles.root}>
 			<Navbar title="我的收益" />
 			<Body hasTabbar>
 				<Card>
 					<View className={styles.balanceCard}>
-						<Text className={styles.label}>当前余额(元)</Text>
+						<View className={styles.balanceHeader}>
+							<Text className={styles.label}>当前余额(元)</Text>
+							<View className={styles.rankingBtn} onClick={goToRanking}>
+								<Text>佣金排行 🏆</Text>
+							</View>
+						</View>
 						<Text className={styles.amount}>{incomeData.currentBalance}</Text>
 						<View className={styles.stats}>
 							<View className={styles.statItem}>

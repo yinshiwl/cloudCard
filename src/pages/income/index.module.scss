@@ -5,6 +5,22 @@
     flex-direction: column;
     gap: 30rpx;
 
+    .balanceHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      .rankingBtn {
+        display: flex;
+        align-items: center;
+        color: #4b87ff;
+        border-radius: 30rpx;
+        padding: 8rpx 16rpx;
+        font-size: 26rpx;
+      }
+    }
+
     .label {
       font-size: 28rpx;
       color: #666;
